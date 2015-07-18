@@ -73,7 +73,9 @@ This will download all resources needed in order to render the tiles.
 
 There is a script that generates an example tile. Execute the following script:
 
-```./tiles/tilegen/base/testimage.py```
+```
+./tiles/tilegen/base/testimage.py
+```
 
 and compare it with the ```reference.png``` that is located in the very same directory. If the output matches, you are ready to go.
 
@@ -82,7 +84,9 @@ and compare it with the ```reference.png``` that is located in the very same dir
 
 I already pre-compiled the zones and you will find them in the following folder.
 
-```tiles/tilegen/zones/*```
+```
+tiles/tilegen/zones/*
+```
 
 But you can regenerate them or setup new zones. I included the world database that creates boundary data for each country in the world. Not really optimized but they work for most countries. You be warned to avoid large countries like Russia or China - they will take a long, long, very long time. 
 
