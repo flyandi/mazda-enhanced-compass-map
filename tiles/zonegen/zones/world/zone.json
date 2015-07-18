@@ -1,0 +1,10 @@
+{
+	"disabled": false,
+	"name": "world",	
+	"source": "data/world.shp",
+	"mapping": {
+		"id": "ISO_2_CODE",
+		"name": "NAME",
+		"prefix": false
+	}
+}

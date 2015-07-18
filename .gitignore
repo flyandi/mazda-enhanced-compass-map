@@ -1,5 +1,5 @@
 .DS_Store
 poi/output/
-resources/poi/
-resources/tiles/
-tilepack/
+output/*
+tiles/tilestyles/mazda/layers
+tiles/zonegen/zones/us/

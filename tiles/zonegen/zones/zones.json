@@ -1,0 +1,13 @@
+{
+	"zones": [
+		{	
+			"id": "us",
+			"path": "us"
+		},
+		{
+			"id": "world",
+			"path": "world",
+			"except": ["us"]
+		}
+	]
+}
