@@ -1,6 +1,6 @@
 {
 	"disabled": false,
-	"name": "world",	
+	"name": "us",	
 	"source": "data/cb_2014_us_state_20m.shp",
 	"mapping": {
 		"id": "NAME",
