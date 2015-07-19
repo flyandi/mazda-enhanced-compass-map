@@ -105,22 +105,35 @@ if($zones != null && isset($zones->zones))
 								str_replace(" ", "-", $data->name)
 							));
 
-							$cmd = "\trender_tiles(%s, mapfile, tile_dir, 0, 11, \"%s\")";
+							$renderParams = array(
+								"\trender_tiles({BB}, mapfile, tile_dir, 0, 11, \"{NAME}\")",
+								"\trender_tiles({BB}, mapfile, tile_dir, 13, 13, \"{NAME}\")",
+								"\trender_tiles({BB}, mapfile, tile_dir, 15, 15, \"{NAME}\")",
+								"\trender_tiles({BB}, mapfile, tile_dir, 17, 17, \"{NAME}\")",
+							);
+
 							foreach($coords as $a) {
 							
-								// get nearest 
-								$b = getNearest($a[1], $coords);
+								// get nearest and farthest
+								$b = getNearest($a[0], $coords);
+								$c = getFarthest($b[1], $coords);
 
-								// create bounding box
-								$boxes[] = sprintf($cmd, 
-									// bounding box
-									sprintf("(%s,%s,%s,%s)",
-										$a[0], $a[1], $b[0], $b[1]
+								$params = array(
+									"BB" => sprintf("(%s,%s,%s,%s)",
+										$a[0], $a[1], $c[0], $b[1]
 									),
 
-									// name
-									$partId
+									"NAME" => $partId,
 								);
+
+								foreach($renderParams as $cmd) {
+
+									foreach($params as $key=>$value) {
+										$cmd = str_replace(sprintf("{%s}", $key), $value, $cmd);
+									}
+
+									$boxes[] = $cmd;
+								}
 							}
 						}
 
