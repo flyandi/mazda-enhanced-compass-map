@@ -4,6 +4,11 @@ import mapnik;
 
 import sys, os
 
+from mapnik import register_fonts, FontEngine
+    
+custom_fonts_dir = '../../../fonts/'
+register_fonts(custom_fonts_dir)
+
 # Set up projections
 # spherical mercator (most common target map projection of osm data imported with osm2pgsql)
 merc = mapnik.Projection('+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over')
@@ -19,7 +24,7 @@ if not hasattr(mapnik,'mapnik_version') and not mapnik.mapnik_version() >= 600:
 
 if __name__ == "__main__":
 
-    mapfile = "../tilestyles/mazda/mazda.xml"
+    mapfile = "../../tilestyles/mazda/mazda.xml"
     map_uri = "image.png"
 
     #---------------------------------------------------

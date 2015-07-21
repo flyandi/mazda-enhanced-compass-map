@@ -194,18 +194,16 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
-
-
 if __name__ == "__main__":
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
         # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,49 +212,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: us
     # Region: District of Columbia
     # Region Name: DC
 
-	render_tiles((-77.03901,38.79165,-77.04102,38.84127), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.03901,38.79165,-77.04102,38.84127), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.03901,38.79165,-77.04102,38.84127), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.03901,38.79165,-77.04102,38.84127), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-76.9795,38.83781,-77.03901,38.96553), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-76.9795,38.83781,-77.03901,38.96553), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-76.9795,38.83781,-77.03901,38.96553), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-76.9795,38.83781,-77.03901,38.96553), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-77.03907,38.84127,-77.04102,38.86811), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.03907,38.84127,-77.04102,38.86811), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.03907,38.84127,-77.04102,38.86811), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.03907,38.84127,-77.04102,38.86811), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-77.0391,38.86811,-77.04102,38.84127), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.0391,38.86811,-77.04102,38.84127), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.0391,38.86811,-77.04102,38.84127), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.0391,38.86811,-77.04102,38.84127), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-76.90939,38.89285,-77.04102,38.83781), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-76.90939,38.89285,-77.04102,38.83781), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-76.90939,38.89285,-77.04102,38.83781), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-76.90939,38.89285,-77.04102,38.83781), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-77.0902,38.90421,-77.03901,38.93434), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.0902,38.90421,-77.03901,38.93434), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.0902,38.90421,-77.03901,38.93434), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.0902,38.90421,-77.03901,38.93434), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.11976,38.93434,-77.03901,38.90421), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-77.00255,38.96553,-77.04102,38.83781), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.00255,38.96553,-77.04102,38.83781), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.00255,38.96553,-77.04102,38.83781), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.00255,38.96553,-77.04102,38.83781), mapfile, tile_dir, 17, 17, "district of columbia-dc")
-	render_tiles((-77.04102,38.99555,-77.04102,38.86811), mapfile, tile_dir, 0, 11, "district of columbia-dc")
-	render_tiles((-77.04102,38.99555,-77.04102,38.86811), mapfile, tile_dir, 13, 13, "district of columbia-dc")
-	render_tiles((-77.04102,38.99555,-77.04102,38.86811), mapfile, tile_dir, 15, 15, "district of columbia-dc")
-	render_tiles((-77.04102,38.99555,-77.04102,38.86811), mapfile, tile_dir, 17, 17, "district of columbia-dc")
+    render_tiles((-77.11976,38.79165,-76.90939,38.99555), mapfile, tile_dir, 0, 11, "district of columbia-dc")
+    render_tiles((-77.11976,38.79165,-76.90939,38.99555), mapfile, tile_dir, 13, 13, "district of columbia-dc")
+    render_tiles((-77.11976,38.79165,-76.90939,38.99555), mapfile, tile_dir, 15, 15, "district of columbia-dc")
+    render_tiles((-77.11976,38.79165,-76.90939,38.99555), mapfile, tile_dir, 17, 17, "district of columbia-dc")

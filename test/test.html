@@ -1,0 +1,49 @@
+<html>
+<head>
+	<script src="ol.js"></script>
+
+	<style>
+		* {padding:0;margin:0;}
+		#map {position:fixed;top:0;left:0;right:0;bottom:0;}
+	</style>
+</head>
+
+<body>
+
+	<div id="map"></div>
+
+	<script>
+
+	// CHANGE THESE PARAMETERS
+
+	var params = {
+		center: [-13618678.447785482, 4201854.181677031],
+		zoom: 3,
+		zone: 'world'
+	};
+
+
+	// DO NOT CHANGE ANYTING HERE
+
+	var map = new ol.Map({
+        layers: [
+         	new ol.layer.Tile({
+	            source: new ol.source.OSM({
+	            	url: '../output/' + params.zone + '/{z}/{x}/{y}.png',
+	        	})
+        	})
+        ],
+        target: document.getElementById("map"),
+        view: new ol.View({
+            maxZoom: 17,
+            center: params.center,
+            zoom: params.zoom
+            //rotation: Math.PI / 6,
+        })     
+    });
+
+	</script>
+
+
+</body>
+</html>

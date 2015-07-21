@@ -194,18 +194,16 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
-
-
 if __name__ == "__main__":
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
         # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,45 +212,47 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: DM
     # Region Name: Dominica
 
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 17, 17, "dm-dominica")
-	render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 0, 11, "dm-dominica")
-	render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 13, 13, "dm-dominica")
-	render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 15, 15, "dm-dominica")
-	render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.3525,15.2,-61.46834,15.23639), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.37778,15.23639,-61.46834,15.2), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.26501,15.25805,-61.46834,15.37611), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.25362,15.37611,-61.46834,15.25805), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.42278,15.4175,-61.46834,15.23639), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.49001,15.53555,-61.3525,15.62805), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.30862,15.57638,-61.46834,15.25805), mapfile, tile_dir, 17, 17, "dm-dominica")
+    render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 0, 11, "dm-dominica")
+    render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 13, 13, "dm-dominica")
+    render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 15, 15, "dm-dominica")
+    render_tiles((-61.46834,15.62805,-61.3525,15.53555), mapfile, tile_dir, 17, 17, "dm-dominica")

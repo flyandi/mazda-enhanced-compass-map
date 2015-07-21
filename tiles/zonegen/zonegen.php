@@ -74,6 +74,8 @@ if($zones != null && isset($zones->zones))
 					$shpData = $record->getShpData();
 					$shapes = array();
 					$boxes = array();
+					$bbox = array(false, false, false, false);
+
 
 					// process shape
 					if(isset($shpData['numparts'])) {
@@ -106,25 +108,53 @@ if($zones != null && isset($zones->zones))
 							));
 
 							$renderParams = array(
-								"\trender_tiles({BB}, mapfile, tile_dir, 0, 11, \"{NAME}\")",
-								"\trender_tiles({BB}, mapfile, tile_dir, 13, 13, \"{NAME}\")",
-								"\trender_tiles({BB}, mapfile, tile_dir, 15, 15, \"{NAME}\")",
-								"\trender_tiles({BB}, mapfile, tile_dir, 17, 17, \"{NAME}\")",
+								"    render_tiles({BB}, mapfile, tile_dir, 0, 11, \"{NAME}\")",
+								"    render_tiles({BB}, mapfile, tile_dir, 13, 13, \"{NAME}\")",
+								"    render_tiles({BB}, mapfile, tile_dir, 15, 15, \"{NAME}\")",
+								"    render_tiles({BB}, mapfile, tile_dir, 17, 17, \"{NAME}\")",
 							);
 
 							foreach($coords as $a) {
+
+								switch(true) {
+
+									case $zone->box:
+
+										if($a[0] < $bbox[0] || $bbox[0] === false) $bbox[0] = $a[0];
+										if($a[1] < $bbox[1] || $bbox[1] === false) $bbox[1] = $a[1];
+
+										if($a[0] > $bbox[2] || $bbox[2] === false) $bbox[2] = $a[0];
+										if($a[1] > $bbox[3] || $bbox[3] === false) $bbox[3] = $a[1];
+
+
+										$boxes = array();
+
+										$params = array(
+											"BB" => sprintf("(%s)", implode(",", $bbox)),
+
+											"NAME" => $partId,
+										);
+
+										break;
+
+
+									default:
 							
-								// get nearest and farthest
-								$b = getNearest($a[0], $coords);
-								$c = getFarthest($b[1], $coords);
+										// get nearest and farthest
+										$b = getNearest($a[0], $coords);
+										$c = getFarthest($b[1], $coords);
 
-								$params = array(
-									"BB" => sprintf("(%s,%s,%s,%s)",
-										$a[0], $a[1], $c[0], $b[1]
-									),
+										$params = array(
+											"BB" => sprintf("(%s,%s,%s,%s)",
+												$a[0], $a[1], $c[0], $b[1]
+											),
 
-									"NAME" => $partId,
-								);
+											"NAME" => $partId,
+										);
+
+
+										break;
+								}
 
 								foreach($renderParams as $cmd) {
 
@@ -162,3 +192,5 @@ if($zones != null && isset($zones->zones))
 			}
 		}
 	}
+
+
