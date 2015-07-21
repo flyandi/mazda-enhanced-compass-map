@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -194,7 +193,15 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
+
+
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
         mapfile = "../../../tilestyles/mazda/mazda.xml"
@@ -202,7 +209,6 @@ if __name__ == "__main__":
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
         tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
@@ -220,35 +226,7 @@ if __name__ == "__main__":
     # Region: BH
     # Region Name: Bahrain
 
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 17, 17, "bh-bahrain")
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.57054,25.79055,50.57054,26.19138), mapfile, tile_dir, 17, 17, "bh-bahrain")
-    render_tiles((50.60749,25.86277,50.57054,26.12777), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.60749,25.86277,50.57054,26.12777), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.60749,25.86277,50.57054,26.12777), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.60749,25.86277,50.57054,26.12777), mapfile, tile_dir, 17, 17, "bh-bahrain")
-    render_tiles((50.4661,25.94944,50.57054,26.24028), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.4661,25.94944,50.57054,26.24028), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.4661,25.94944,50.57054,26.24028), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.4661,25.94944,50.57054,26.24028), mapfile, tile_dir, 17, 17, "bh-bahrain")
-    render_tiles((50.61304,26.12777,50.50193,25.86277), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.61304,26.12777,50.50193,25.86277), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.61304,26.12777,50.50193,25.86277), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.61304,26.12777,50.50193,25.86277), mapfile, tile_dir, 17, 17, "bh-bahrain")
-    render_tiles((50.55415,26.19138,50.50193,25.79055), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.55415,26.19138,50.50193,25.79055), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.55415,26.19138,50.50193,25.79055), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.55415,26.19138,50.50193,25.79055), mapfile, tile_dir, 17, 17, "bh-bahrain")
-    render_tiles((50.60027,26.21583,50.50193,25.86277), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.60027,26.21583,50.50193,25.86277), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.60027,26.21583,50.50193,25.86277), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.60027,26.21583,50.50193,25.86277), mapfile, tile_dir, 17, 17, "bh-bahrain")
-    render_tiles((50.50193,26.24028,50.50193,25.94944), mapfile, tile_dir, 0, 11, "bh-bahrain")
-    render_tiles((50.50193,26.24028,50.50193,25.94944), mapfile, tile_dir, 13, 13, "bh-bahrain")
-    render_tiles((50.50193,26.24028,50.50193,25.94944), mapfile, tile_dir, 15, 15, "bh-bahrain")
-    render_tiles((50.50193,26.24028,50.50193,25.94944), mapfile, tile_dir, 17, 17, "bh-bahrain")
+    render_tiles((50.4661,25.79055,50.61304,26.24028), mapfile, tile_dir, 0, 11, "bh-bahrain")
+    render_tiles((50.4661,25.79055,50.61304,26.24028), mapfile, tile_dir, 13, 13, "bh-bahrain")
+    render_tiles((50.4661,25.79055,50.61304,26.24028), mapfile, tile_dir, 15, 15, "bh-bahrain")
+    render_tiles((50.4661,25.79055,50.61304,26.24028), mapfile, tile_dir, 17, 17, "bh-bahrain")

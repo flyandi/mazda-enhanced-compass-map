@@ -1,6 +1,7 @@
 {
-	"disabled": true,
+	"disabled": false,
 	"name": "world",	
+	"box": true,
 	"source": "data/world.shp",
 	"mapping": {
 		"id": "ISO_2_CODE",

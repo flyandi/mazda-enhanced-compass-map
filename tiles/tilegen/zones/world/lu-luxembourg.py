@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,97 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: LU
     # Region Name: Luxembourg
 
-	render_tiles((5.98139,49.44832,5.98139,50.17221), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.98139,49.44832,5.98139,50.17221), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.98139,49.44832,5.98139,50.17221), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.98139,49.44832,5.98139,50.17221), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.36222,49.45998,5.98,49.59026), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.36222,49.45998,5.98,49.59026), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.36222,49.45998,5.98,49.59026), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.36222,49.45998,5.98,49.59026), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.96333,49.48832,5.98139,50.17221), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.96333,49.48832,5.98139,50.17221), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.96333,49.48832,5.98139,50.17221), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.96333,49.48832,5.98139,50.17221), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.16528,49.50471,5.98139,49.99665), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.16528,49.50471,5.98139,49.99665), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.16528,49.50471,5.98139,49.99665), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.16528,49.50471,5.98139,49.99665), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.78304,49.52727,5.98139,49.9611), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.84,49.55221,5.98,49.74915), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.84,49.55221,5.98,49.74915), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.84,49.55221,5.98,49.74915), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.84,49.55221,5.98,49.74915), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.3725,49.59026,5.98,49.45998), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.3725,49.59026,5.98,49.45998), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.3725,49.59026,5.98,49.45998), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.3725,49.59026,5.98,49.45998), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.89917,49.66276,5.98,49.55221), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.89917,49.66276,5.98,49.55221), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.89917,49.66276,5.98,49.55221), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.89917,49.66276,5.98,49.55221), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.51055,49.70638,5.98139,49.8111), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.51055,49.70638,5.98139,49.8111), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.51055,49.70638,5.98139,49.8111), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.51055,49.70638,5.98139,49.8111), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.82056,49.74915,5.98139,50.00971), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.82056,49.74915,5.98139,50.00971), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.82056,49.74915,5.98139,50.00971), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.82056,49.74915,5.98139,50.00971), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.74667,49.79527,5.98139,49.84915), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.74667,49.79527,5.98139,49.84915), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.74667,49.79527,5.98139,49.84915), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.74667,49.79527,5.98139,49.84915), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.52222,49.8111,5.98,49.70638), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.52222,49.8111,5.98,49.70638), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.52222,49.8111,5.98,49.70638), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.52222,49.8111,5.98,49.70638), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.32667,49.83971,5.98,49.45998), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.32667,49.83971,5.98,49.45998), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.32667,49.83971,5.98,49.45998), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.32667,49.83971,5.98,49.45998), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.75333,49.84915,5.98,49.79527), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.75333,49.84915,5.98,49.79527), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.75333,49.84915,5.98,49.79527), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.75333,49.84915,5.98,49.79527), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.73111,49.89415,5.98,49.79527), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.73111,49.89415,5.98,49.79527), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.73111,49.89415,5.98,49.79527), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.73111,49.89415,5.98,49.79527), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.80833,49.9611,5.98139,50.00971), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.80833,49.9611,5.98139,50.00971), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.80833,49.9611,5.98139,50.00971), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.80833,49.9611,5.98139,50.00971), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.13972,49.99665,5.98139,50.12553), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.13972,49.99665,5.98139,50.12553), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.13972,49.99665,5.98139,50.12553), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.13972,49.99665,5.98139,50.12553), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.81972,50.00971,5.98,49.74915), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.81972,50.00971,5.98,49.74915), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.81972,50.00971,5.98,49.74915), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.81972,50.00971,5.98,49.74915), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.13183,50.12553,5.98139,49.99665), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.13183,50.12553,5.98139,49.99665), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.13183,50.12553,5.98139,49.99665), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.13183,50.12553,5.98139,49.99665), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((6.10694,50.16776,5.98139,50.12553), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((6.10694,50.16776,5.98139,50.12553), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((6.10694,50.16776,5.98139,50.12553), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((6.10694,50.16776,5.98139,50.12553), mapfile, tile_dir, 17, 17, "lu-luxembourg")
-	render_tiles((5.98,50.17221,5.98,49.44832), mapfile, tile_dir, 0, 11, "lu-luxembourg")
-	render_tiles((5.98,50.17221,5.98,49.44832), mapfile, tile_dir, 13, 13, "lu-luxembourg")
-	render_tiles((5.98,50.17221,5.98,49.44832), mapfile, tile_dir, 15, 15, "lu-luxembourg")
-	render_tiles((5.98,50.17221,5.98,49.44832), mapfile, tile_dir, 17, 17, "lu-luxembourg")
+    render_tiles((5.73111,49.44832,6.52222,50.17221), mapfile, tile_dir, 0, 11, "lu-luxembourg")
+    render_tiles((5.73111,49.44832,6.52222,50.17221), mapfile, tile_dir, 13, 13, "lu-luxembourg")
+    render_tiles((5.73111,49.44832,6.52222,50.17221), mapfile, tile_dir, 15, 15, "lu-luxembourg")
+    render_tiles((5.73111,49.44832,6.52222,50.17221), mapfile, tile_dir, 17, 17, "lu-luxembourg")

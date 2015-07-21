@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,101 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: SZ
     # Region Name: Swaziland
 
-	render_tiles((31.9836,-27.31667,31.9836,-25.95818), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.9836,-27.31667,31.9836,-25.95818), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.9836,-27.31667,31.9836,-25.95818), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.9836,-27.31667,31.9836,-25.95818), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.51749,-27.31306,31.9836,-25.72834), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.51749,-27.31306,31.9836,-25.72834), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.51749,-27.31306,31.9836,-25.72834), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.51749,-27.31306,31.9836,-25.72834), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.16166,-27.20305,31.9836,-25.91389), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.16166,-27.20305,31.9836,-25.91389), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.16166,-27.20305,31.9836,-25.91389), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.16166,-27.20305,31.9836,-25.91389), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.9586,-27.11278,31.9836,-25.95818), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.9586,-27.11278,31.9836,-25.95818), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.9586,-27.11278,31.9836,-25.95818), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.9586,-27.11278,31.9836,-25.95818), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((30.98305,-27.02945,31.9836,-26.09139), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((30.98305,-27.02945,31.9836,-26.09139), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((30.98305,-27.02945,31.9836,-26.09139), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((30.98305,-27.02945,31.9836,-26.09139), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((32.13422,-26.84057,31.9836,-26.50584), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((32.13422,-26.84057,31.9836,-26.50584), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((32.13422,-26.84057,31.9836,-26.50584), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((32.13422,-26.84057,31.9836,-26.50584), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((30.81888,-26.81056,31.42166,-26.7025), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((30.81888,-26.81056,31.42166,-26.7025), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((30.81888,-26.81056,31.42166,-26.7025), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((30.81888,-26.81056,31.42166,-26.7025), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((32.00694,-26.80862,31.42166,-27.31667), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((32.00694,-26.80862,31.42166,-27.31667), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((32.00694,-26.80862,31.42166,-27.31667), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((32.00694,-26.80862,31.42166,-27.31667), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((30.89944,-26.77195,31.42166,-26.81056), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((30.89944,-26.77195,31.42166,-26.81056), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((30.89944,-26.77195,31.42166,-26.81056), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((30.89944,-26.77195,31.42166,-26.81056), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((30.8036,-26.7025,31.9836,-26.46222), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((30.8036,-26.7025,31.9836,-26.46222), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((30.8036,-26.7025,31.9836,-26.46222), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((30.8036,-26.7025,31.9836,-26.46222), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((32.12915,-26.50584,31.42166,-26.84057), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((32.12915,-26.50584,31.42166,-26.84057), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((32.12915,-26.50584,31.42166,-26.84057), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((32.12915,-26.50584,31.42166,-26.84057), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((30.80222,-26.46222,31.42166,-26.7025), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((30.80222,-26.46222,31.42166,-26.7025), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((30.80222,-26.46222,31.42166,-26.7025), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((30.80222,-26.46222,31.42166,-26.7025), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((32.07221,-26.39334,31.9836,-26.26139), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((32.07221,-26.39334,31.9836,-26.26139), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((32.07221,-26.39334,31.9836,-26.26139), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((32.07221,-26.39334,31.9836,-26.26139), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((32.0611,-26.26139,31.9836,-26.39334), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((32.0611,-26.26139,31.9836,-26.39334), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((32.0611,-26.26139,31.9836,-26.39334), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((32.0611,-26.26139,31.9836,-26.39334), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((32.10304,-26.16222,31.9836,-26.00945), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((32.10304,-26.16222,31.9836,-26.00945), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((32.10304,-26.16222,31.9836,-26.00945), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((32.10304,-26.16222,31.9836,-26.00945), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.06388,-26.09139,31.9836,-25.91389), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.06388,-26.09139,31.9836,-25.91389), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.06388,-26.09139,31.9836,-25.91389), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.06388,-26.09139,31.9836,-25.91389), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((32.08998,-26.00945,31.9836,-26.16222), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((32.08998,-26.00945,31.9836,-26.16222), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((32.08998,-26.00945,31.9836,-26.16222), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((32.08998,-26.00945,31.9836,-26.16222), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.87805,-25.99556,31.42166,-27.11278), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.87805,-25.99556,31.42166,-27.11278), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.87805,-25.99556,31.42166,-27.11278), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.87805,-25.99556,31.42166,-27.11278), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.96774,-25.95818,31.42166,-27.11278), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.12833,-25.91389,31.42166,-27.20305), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.12833,-25.91389,31.42166,-27.20305), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.12833,-25.91389,31.42166,-27.20305), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.12833,-25.91389,31.42166,-27.20305), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.32055,-25.75528,31.9836,-25.72834), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.32055,-25.75528,31.9836,-25.72834), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.32055,-25.75528,31.9836,-25.72834), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.32055,-25.75528,31.9836,-25.72834), mapfile, tile_dir, 17, 17, "sz-swaziland")
-	render_tiles((31.42166,-25.72834,31.42166,-27.31306), mapfile, tile_dir, 0, 11, "sz-swaziland")
-	render_tiles((31.42166,-25.72834,31.42166,-27.31306), mapfile, tile_dir, 13, 13, "sz-swaziland")
-	render_tiles((31.42166,-25.72834,31.42166,-27.31306), mapfile, tile_dir, 15, 15, "sz-swaziland")
-	render_tiles((31.42166,-25.72834,31.42166,-27.31306), mapfile, tile_dir, 17, 17, "sz-swaziland")
+    render_tiles((30.80222,-27.31667,32.13422,-25.72834), mapfile, tile_dir, 0, 11, "sz-swaziland")
+    render_tiles((30.80222,-27.31667,32.13422,-25.72834), mapfile, tile_dir, 13, 13, "sz-swaziland")
+    render_tiles((30.80222,-27.31667,32.13422,-25.72834), mapfile, tile_dir, 15, 15, "sz-swaziland")
+    render_tiles((30.80222,-27.31667,32.13422,-25.72834), mapfile, tile_dir, 17, 17, "sz-swaziland")

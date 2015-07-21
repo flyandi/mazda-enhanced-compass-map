@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,61 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: RE
     # Region Name: Reunion
 
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.61304,-21.37362,55.61304,-20.88334), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.79332,-21.34973,55.41499,-21.32473), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.79332,-21.34973,55.41499,-21.32473), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.79332,-21.34973,55.41499,-21.32473), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.79332,-21.34973,55.41499,-21.32473), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.82388,-21.32473,55.41499,-21.13639), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.82388,-21.32473,55.41499,-21.13639), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.82388,-21.32473,55.41499,-21.13639), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.82388,-21.32473,55.41499,-21.13639), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.33777,-21.26028,55.61304,-20.90778), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.33777,-21.26028,55.61304,-20.90778), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.33777,-21.26028,55.61304,-20.90778), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.33777,-21.26028,55.61304,-20.90778), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.85138,-21.13639,55.41499,-21.32473), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.85138,-21.13639,55.41499,-21.32473), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.85138,-21.13639,55.41499,-21.32473), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.85138,-21.13639,55.41499,-21.32473), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.22137,-21.02223,55.61304,-20.97362), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.22137,-21.02223,55.61304,-20.97362), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.22137,-21.02223,55.61304,-20.97362), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.22137,-21.02223,55.61304,-20.97362), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.70999,-20.99806,55.61304,-20.92806), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.70999,-20.99806,55.61304,-20.92806), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.70999,-20.99806,55.61304,-20.92806), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.70999,-20.99806,55.61304,-20.92806), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.2861,-20.97362,55.61304,-20.90778), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.2861,-20.97362,55.61304,-20.90778), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.2861,-20.97362,55.61304,-20.90778), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.2861,-20.97362,55.61304,-20.90778), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.68777,-20.92806,55.61304,-20.99806), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.68777,-20.92806,55.61304,-20.99806), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.68777,-20.92806,55.61304,-20.99806), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.68777,-20.92806,55.61304,-20.99806), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.29166,-20.90778,55.61304,-20.97362), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.29166,-20.90778,55.61304,-20.97362), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.29166,-20.90778,55.61304,-20.97362), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.29166,-20.90778,55.61304,-20.97362), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.58833,-20.88334,55.41499,-21.37362), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.58833,-20.88334,55.41499,-21.37362), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.58833,-20.88334,55.41499,-21.37362), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.58833,-20.88334,55.41499,-21.37362), mapfile, tile_dir, 17, 17, "re-reunion")
-	render_tiles((55.41499,-20.86556,55.41499,-21.26028), mapfile, tile_dir, 0, 11, "re-reunion")
-	render_tiles((55.41499,-20.86556,55.41499,-21.26028), mapfile, tile_dir, 13, 13, "re-reunion")
-	render_tiles((55.41499,-20.86556,55.41499,-21.26028), mapfile, tile_dir, 15, 15, "re-reunion")
-	render_tiles((55.41499,-20.86556,55.41499,-21.26028), mapfile, tile_dir, 17, 17, "re-reunion")
+    render_tiles((55.22137,-21.37362,55.85138,-20.86556), mapfile, tile_dir, 0, 11, "re-reunion")
+    render_tiles((55.22137,-21.37362,55.85138,-20.86556), mapfile, tile_dir, 13, 13, "re-reunion")
+    render_tiles((55.22137,-21.37362,55.85138,-20.86556), mapfile, tile_dir, 15, 15, "re-reunion")
+    render_tiles((55.22137,-21.37362,55.85138,-20.86556), mapfile, tile_dir, 17, 17, "re-reunion")

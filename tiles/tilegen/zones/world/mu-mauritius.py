@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,73 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: MU
     # Region Name: Mauritius
 
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.37138,-20.50584,57.67471,-20.40778), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.65221,-20.48779,57.37138,-20.00112), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.65221,-20.48779,57.37138,-20.00112), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.65221,-20.48779,57.37138,-20.00112), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.65221,-20.48779,57.37138,-20.00112), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.72276,-20.4389,57.67471,-20.39028), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.72276,-20.4389,57.67471,-20.39028), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.72276,-20.4389,57.67471,-20.39028), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.72276,-20.4389,57.67471,-20.39028), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.30638,-20.43667,57.67471,-20.34195), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.30638,-20.43667,57.67471,-20.34195), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.30638,-20.43667,57.67471,-20.34195), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.30638,-20.43667,57.67471,-20.34195), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.36582,-20.40778,57.67471,-20.50584), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.36582,-20.40778,57.67471,-20.50584), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.36582,-20.40778,57.67471,-20.50584), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.36582,-20.40778,57.67471,-20.50584), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.70499,-20.39028,57.67471,-20.4389), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.70499,-20.39028,57.67471,-20.4389), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.70499,-20.39028,57.67471,-20.4389), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.70499,-20.39028,57.67471,-20.4389), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.35526,-20.34195,57.67471,-20.40778), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.35526,-20.34195,57.67471,-20.40778), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.35526,-20.34195,57.67471,-20.40778), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.35526,-20.34195,57.67471,-20.40778), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.78582,-20.29362,57.37138,-20.17362), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.78582,-20.29362,57.37138,-20.17362), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.78582,-20.29362,57.37138,-20.17362), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.78582,-20.29362,57.37138,-20.17362), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.4136,-20.18362,57.67471,-20.50584), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.4136,-20.18362,57.67471,-20.50584), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.4136,-20.18362,57.67471,-20.50584), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.4136,-20.18362,57.67471,-20.50584), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.76916,-20.17362,57.67471,-20.29362), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.76916,-20.17362,57.67471,-20.29362), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.76916,-20.17362,57.67471,-20.29362), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.76916,-20.17362,57.67471,-20.29362), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.49332,-20.15195,57.37138,-20.02334), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.49332,-20.15195,57.37138,-20.02334), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.49332,-20.15195,57.37138,-20.02334), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.49332,-20.15195,57.37138,-20.02334), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.74971,-20.12334,57.37138,-20.17362), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.74971,-20.12334,57.37138,-20.17362), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.74971,-20.12334,57.37138,-20.17362), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.74971,-20.12334,57.37138,-20.17362), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.52499,-20.02334,57.37138,-20.15195), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.52499,-20.02334,57.37138,-20.15195), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.52499,-20.02334,57.37138,-20.15195), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.52499,-20.02334,57.37138,-20.15195), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.55971,-20.00223,57.37138,-20.02334), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.55971,-20.00223,57.37138,-20.02334), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.55971,-20.00223,57.37138,-20.02334), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.55971,-20.00223,57.37138,-20.02334), mapfile, tile_dir, 17, 17, "mu-mauritius")
-	render_tiles((57.67471,-20.00112,57.67471,-20.48779), mapfile, tile_dir, 0, 11, "mu-mauritius")
-	render_tiles((57.67471,-20.00112,57.67471,-20.48779), mapfile, tile_dir, 13, 13, "mu-mauritius")
-	render_tiles((57.67471,-20.00112,57.67471,-20.48779), mapfile, tile_dir, 15, 15, "mu-mauritius")
-	render_tiles((57.67471,-20.00112,57.67471,-20.48779), mapfile, tile_dir, 17, 17, "mu-mauritius")
+    render_tiles((57.30638,-20.50584,57.78582,-20.00112), mapfile, tile_dir, 0, 11, "mu-mauritius")
+    render_tiles((57.30638,-20.50584,57.78582,-20.00112), mapfile, tile_dir, 13, 13, "mu-mauritius")
+    render_tiles((57.30638,-20.50584,57.78582,-20.00112), mapfile, tile_dir, 15, 15, "mu-mauritius")
+    render_tiles((57.30638,-20.50584,57.78582,-20.00112), mapfile, tile_dir, 17, 17, "mu-mauritius")

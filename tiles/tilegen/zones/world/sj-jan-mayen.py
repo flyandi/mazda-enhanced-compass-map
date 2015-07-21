@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,61 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: SJ
     # Region Name: Jan Mayen
 
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-9.07167,70.80664,-7.99722,70.86304), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-8.98889,70.81108,-7.99722,70.80664), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-8.98889,70.81108,-7.99722,70.80664), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-8.98889,70.81108,-7.99722,70.80664), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-8.98889,70.81108,-7.99722,70.80664), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-9.12,70.86304,-7.99722,70.80664), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-9.12,70.86304,-7.99722,70.80664), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-9.12,70.86304,-7.99722,70.80664), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-9.12,70.86304,-7.99722,70.80664), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-8.62028,70.95914,-9.07167,71.01331), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-8.62028,70.95914,-9.07167,71.01331), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-8.62028,70.95914,-9.07167,71.01331), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-8.62028,70.95914,-9.07167,71.01331), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-8.24306,70.98109,-9.07167,71.14053), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-8.24306,70.98109,-9.07167,71.14053), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-8.24306,70.98109,-9.07167,71.14053), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-8.24306,70.98109,-9.07167,71.14053), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-8.51111,71.01331,-7.99722,70.95914), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-8.51111,71.01331,-7.99722,70.95914), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-8.51111,71.01331,-7.99722,70.95914), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-8.51111,71.01331,-7.99722,70.95914), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-7.98195,71.04776,-9.07167,71.18082), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-7.98195,71.04776,-9.07167,71.18082), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-7.98195,71.04776,-9.07167,71.18082), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-7.98195,71.04776,-9.07167,71.18082), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-8.00111,71.10332,-9.07167,71.18082), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-8.00111,71.10332,-9.07167,71.18082), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-8.00111,71.10332,-9.07167,71.18082), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-8.00111,71.10332,-9.07167,71.18082), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-7.93417,71.13609,-9.07167,71.15692), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-7.93417,71.13609,-9.07167,71.15692), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-7.93417,71.13609,-9.07167,71.15692), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-7.93417,71.13609,-9.07167,71.15692), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-8.32667,71.14053,-7.99722,70.98109), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-8.32667,71.14053,-7.99722,70.98109), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-8.32667,71.14053,-7.99722,70.98109), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-8.32667,71.14053,-7.99722,70.98109), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-7.93222,71.15692,-9.07167,71.13609), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-7.93222,71.15692,-9.07167,71.13609), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-7.93222,71.15692,-9.07167,71.13609), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-7.93222,71.15692,-9.07167,71.13609), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
-	render_tiles((-7.99722,71.18082,-9.07167,71.10332), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
-	render_tiles((-7.99722,71.18082,-9.07167,71.10332), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
-	render_tiles((-7.99722,71.18082,-9.07167,71.10332), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
-	render_tiles((-7.99722,71.18082,-9.07167,71.10332), mapfile, tile_dir, 17, 17, "sj-jan-mayen")
+    render_tiles((-9.12,70.80664,-7.93222,71.18082), mapfile, tile_dir, 0, 11, "sj-jan-mayen")
+    render_tiles((-9.12,70.80664,-7.93222,71.18082), mapfile, tile_dir, 13, 13, "sj-jan-mayen")
+    render_tiles((-9.12,70.80664,-7.93222,71.18082), mapfile, tile_dir, 15, 15, "sj-jan-mayen")
+    render_tiles((-9.12,70.80664,-7.93222,71.18082), mapfile, tile_dir, 17, 17, "sj-jan-mayen")

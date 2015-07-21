@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -194,7 +193,15 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
+
+
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
         mapfile = "../../../tilestyles/mazda/mazda.xml"
@@ -202,7 +209,6 @@ if __name__ == "__main__":
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
         tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
@@ -220,43 +226,7 @@ if __name__ == "__main__":
     # Region: PS
     # Region Name: Gaza Strip
 
-    render_tiles((34.26708,31.21626,34.49026,31.35221), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.26708,31.21626,34.49026,31.35221), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.26708,31.21626,34.49026,31.35221), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.26708,31.21626,34.49026,31.35221), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.37054,31.29472,34.49026,31.36082), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.37054,31.29472,34.49026,31.36082), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.37054,31.29472,34.49026,31.36082), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.37054,31.29472,34.49026,31.36082), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.21748,31.32249,34.49026,31.32462), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.21748,31.32249,34.49026,31.32462), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.21748,31.32249,34.49026,31.32462), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.21748,31.32249,34.49026,31.32462), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.21989,31.32462,34.49026,31.32249), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.21989,31.32462,34.49026,31.32249), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.21989,31.32462,34.49026,31.32249), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.21989,31.32462,34.49026,31.32249), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.25027,31.35221,34.49026,31.21626), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.25027,31.35221,34.49026,31.21626), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.25027,31.35221,34.49026,31.21626), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.25027,31.35221,34.49026,31.21626), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.36415,31.36082,34.49026,31.29472), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.36415,31.36082,34.49026,31.29472), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.36415,31.36082,34.49026,31.29472), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.36415,31.36082,34.49026,31.29472), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.37777,31.46777,34.49026,31.29472), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.37777,31.46777,34.49026,31.29472), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.37777,31.46777,34.49026,31.29472), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.37777,31.46777,34.49026,31.29472), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.55859,31.53305,34.26708,31.59666), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.55859,31.53305,34.26708,31.59666), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.55859,31.53305,34.26708,31.59666), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.55859,31.53305,34.26708,31.59666), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
-    render_tiles((34.49026,31.59666,34.26708,31.53305), mapfile, tile_dir, 17, 17, "ps-gaza-strip")
+    render_tiles((34.21748,31.21626,34.55859,31.59666), mapfile, tile_dir, 0, 11, "ps-gaza-strip")
+    render_tiles((34.21748,31.21626,34.55859,31.59666), mapfile, tile_dir, 13, 13, "ps-gaza-strip")
+    render_tiles((34.21748,31.21626,34.55859,31.59666), mapfile, tile_dir, 15, 15, "ps-gaza-strip")
+    render_tiles((34.21748,31.21626,34.55859,31.59666), mapfile, tile_dir, 17, 17, "ps-gaza-strip")

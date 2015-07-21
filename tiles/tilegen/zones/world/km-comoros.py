@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -194,7 +193,15 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
+
+
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
         mapfile = "../../../tilestyles/mazda/mazda.xml"
@@ -202,7 +209,6 @@ if __name__ == "__main__":
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
         tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
@@ -220,91 +226,7 @@ if __name__ == "__main__":
     # Region: KM
     # Region Name: Comoros
 
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.48971,-12.37084,44.48971,-12.06945), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.52666,-12.36611,44.46499,-12.22167), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.52666,-12.36611,44.46499,-12.22167), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.52666,-12.36611,44.46499,-12.22167), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.52666,-12.36611,44.46499,-12.22167), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.38138,-12.25584,44.48971,-12.18139), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.38138,-12.25584,44.48971,-12.18139), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.38138,-12.25584,44.48971,-12.18139), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.38138,-12.25584,44.48971,-12.18139), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.52388,-12.22167,44.46499,-12.36611), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.52388,-12.22167,44.46499,-12.36611), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.52388,-12.22167,44.46499,-12.36611), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.52388,-12.22167,44.46499,-12.36611), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.35749,-12.18139,44.46499,-12.25584), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.35749,-12.18139,44.46499,-12.25584), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.35749,-12.18139,44.46499,-12.25584), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.35749,-12.18139,44.46499,-12.25584), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.20666,-12.16195,44.48971,-12.18139), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.20666,-12.16195,44.48971,-12.18139), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.20666,-12.16195,44.48971,-12.18139), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.20666,-12.16195,44.48971,-12.18139), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.41832,-12.12639,44.48971,-12.09028), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.41832,-12.12639,44.48971,-12.09028), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.41832,-12.12639,44.48971,-12.09028), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.41832,-12.12639,44.48971,-12.09028), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.41277,-12.09028,44.48971,-12.12639), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.41277,-12.09028,44.48971,-12.12639), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.41277,-12.09028,44.48971,-12.12639), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.41277,-12.09028,44.48971,-12.12639), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((44.46499,-12.06945,44.46499,-12.37084), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((44.46499,-12.06945,44.46499,-12.37084), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((44.46499,-12.06945,44.46499,-12.37084), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((44.46499,-12.06945,44.46499,-12.37084), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.44249,-11.93472,43.37054,-11.92806), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.47276,-11.92806,43.37054,-11.87917), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.47276,-11.92806,43.37054,-11.87917), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.47276,-11.92806,43.37054,-11.87917), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.47276,-11.92806,43.37054,-11.87917), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.49805,-11.87917,43.37054,-11.92806), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.49805,-11.87917,43.37054,-11.92806), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.49805,-11.87917,43.37054,-11.92806), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.49805,-11.87917,43.37054,-11.92806), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.22665,-11.77306,43.37054,-11.7275), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.22665,-11.77306,43.37054,-11.7275), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.22665,-11.77306,43.37054,-11.7275), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.22665,-11.77306,43.37054,-11.7275), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.21443,-11.7275,43.37054,-11.77306), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.21443,-11.7275,43.37054,-11.77306), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.21443,-11.7275,43.37054,-11.77306), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.21443,-11.7275,43.37054,-11.77306), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.37388,-11.61417,43.44249,-11.37111), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.37388,-11.61417,43.44249,-11.37111), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.37388,-11.61417,43.44249,-11.37111), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.37388,-11.61417,43.44249,-11.37111), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.25888,-11.51,43.44249,-11.41139), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.25888,-11.51,43.44249,-11.41139), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.25888,-11.51,43.44249,-11.41139), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.25888,-11.51,43.44249,-11.41139), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.39665,-11.41139,43.44249,-11.61417), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.39665,-11.41139,43.44249,-11.61417), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.39665,-11.41139,43.44249,-11.61417), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.39665,-11.41139,43.44249,-11.61417), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.26027,-11.41139,43.44249,-11.51), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.26027,-11.41139,43.44249,-11.51), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.26027,-11.41139,43.44249,-11.51), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.26027,-11.41139,43.44249,-11.51), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.28971,-11.37917,43.44249,-11.41139), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.28971,-11.37917,43.44249,-11.41139), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.28971,-11.37917,43.44249,-11.41139), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.28971,-11.37917,43.44249,-11.41139), mapfile, tile_dir, 17, 17, "km-comoros")
-    render_tiles((43.37054,-11.37111,43.44249,-11.61417), mapfile, tile_dir, 0, 11, "km-comoros")
-    render_tiles((43.37054,-11.37111,43.44249,-11.61417), mapfile, tile_dir, 13, 13, "km-comoros")
-    render_tiles((43.37054,-11.37111,43.44249,-11.61417), mapfile, tile_dir, 15, 15, "km-comoros")
-    render_tiles((43.37054,-11.37111,43.44249,-11.61417), mapfile, tile_dir, 17, 17, "km-comoros")
+    render_tiles((43.21443,-12.37084,44.52666,-11.37111), mapfile, tile_dir, 0, 11, "km-comoros")
+    render_tiles((43.21443,-12.37084,44.52666,-11.37111), mapfile, tile_dir, 13, 13, "km-comoros")
+    render_tiles((43.21443,-12.37084,44.52666,-11.37111), mapfile, tile_dir, 15, 15, "km-comoros")
+    render_tiles((43.21443,-12.37084,44.52666,-11.37111), mapfile, tile_dir, 17, 17, "km-comoros")

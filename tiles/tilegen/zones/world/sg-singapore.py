@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,45 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: SG
     # Region Name: Singapore
 
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.8044,1.25972,103.8044,1.42529), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.648,1.3025,103.8044,1.39083), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.648,1.3025,103.8044,1.39083), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.648,1.3025,103.8044,1.39083), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.648,1.3025,103.8044,1.39083), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.96,1.32083,103.8044,1.38191), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.96,1.32083,103.8044,1.38191), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.96,1.32083,103.8044,1.38191), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.96,1.32083,103.8044,1.38191), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.998,1.36556,103.8044,1.38191), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.998,1.36556,103.8044,1.38191), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.998,1.36556,103.8044,1.38191), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.998,1.36556,103.8044,1.38191), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.9915,1.38191,103.8044,1.36556), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.9915,1.38191,103.8044,1.36556), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.9915,1.38191,103.8044,1.36556), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.9915,1.38191,103.8044,1.36556), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.67,1.39083,103.7297,1.3025), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.67,1.39083,103.7297,1.3025), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.67,1.39083,103.7297,1.3025), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.67,1.39083,103.7297,1.3025), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.9091,1.40528,103.7297,1.32083), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.9091,1.40528,103.7297,1.32083), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.9091,1.40528,103.7297,1.32083), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.9091,1.40528,103.7297,1.32083), mapfile, tile_dir, 17, 17, "sg-singapore")
-	render_tiles((103.7297,1.42529,103.8044,1.39083), mapfile, tile_dir, 0, 11, "sg-singapore")
-	render_tiles((103.7297,1.42529,103.8044,1.39083), mapfile, tile_dir, 13, 13, "sg-singapore")
-	render_tiles((103.7297,1.42529,103.8044,1.39083), mapfile, tile_dir, 15, 15, "sg-singapore")
-	render_tiles((103.7297,1.42529,103.8044,1.39083), mapfile, tile_dir, 17, 17, "sg-singapore")
+    render_tiles((103.648,1.25972,103.998,1.42529), mapfile, tile_dir, 0, 11, "sg-singapore")
+    render_tiles((103.648,1.25972,103.998,1.42529), mapfile, tile_dir, 13, 13, "sg-singapore")
+    render_tiles((103.648,1.25972,103.998,1.42529), mapfile, tile_dir, 15, 15, "sg-singapore")
+    render_tiles((103.648,1.25972,103.998,1.42529), mapfile, tile_dir, 17, 17, "sg-singapore")

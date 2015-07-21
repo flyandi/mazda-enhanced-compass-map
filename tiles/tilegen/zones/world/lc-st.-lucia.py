@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,37 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: LC
     # Region Name: St. Lucia
 
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 17, 17, "lc-st.-lucia")
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
-	render_tiles((-60.93862,13.71778,-60.93862,14.10472), mapfile, tile_dir, 17, 17, "lc-st.-lucia")
-	render_tiles((-61.05084,13.77055,-60.94611,13.87333), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
-	render_tiles((-61.05084,13.77055,-60.94611,13.87333), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
-	render_tiles((-61.05084,13.77055,-60.94611,13.87333), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
-	render_tiles((-61.05084,13.77055,-60.94611,13.87333), mapfile, tile_dir, 17, 17, "lc-st.-lucia")
-	render_tiles((-60.89917,13.78444,-60.93862,14.05722), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
-	render_tiles((-60.89917,13.78444,-60.93862,14.05722), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
-	render_tiles((-60.89917,13.78444,-60.93862,14.05722), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
-	render_tiles((-60.89917,13.78444,-60.93862,14.05722), mapfile, tile_dir, 17, 17, "lc-st.-lucia")
-	render_tiles((-61.07973,13.87333,-60.94611,13.77055), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
-	render_tiles((-61.07973,13.87333,-60.94611,13.77055), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
-	render_tiles((-61.07973,13.87333,-60.94611,13.77055), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
-	render_tiles((-61.07973,13.87333,-60.94611,13.77055), mapfile, tile_dir, 17, 17, "lc-st.-lucia")
-	render_tiles((-60.89223,14.05722,-60.94611,13.78444), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
-	render_tiles((-60.89223,14.05722,-60.94611,13.78444), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
-	render_tiles((-60.89223,14.05722,-60.94611,13.78444), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
-	render_tiles((-60.89223,14.05722,-60.94611,13.78444), mapfile, tile_dir, 17, 17, "lc-st.-lucia")
-	render_tiles((-60.94611,14.10472,-60.94611,13.71778), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
-	render_tiles((-60.94611,14.10472,-60.94611,13.71778), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
-	render_tiles((-60.94611,14.10472,-60.94611,13.71778), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
-	render_tiles((-60.94611,14.10472,-60.94611,13.71778), mapfile, tile_dir, 17, 17, "lc-st.-lucia")
+    render_tiles((-61.07973,13.71778,-60.89223,14.10472), mapfile, tile_dir, 0, 11, "lc-st.-lucia")
+    render_tiles((-61.07973,13.71778,-60.89223,14.10472), mapfile, tile_dir, 13, 13, "lc-st.-lucia")
+    render_tiles((-61.07973,13.71778,-60.89223,14.10472), mapfile, tile_dir, 15, 15, "lc-st.-lucia")
+    render_tiles((-61.07973,13.71778,-60.89223,14.10472), mapfile, tile_dir, 17, 17, "lc-st.-lucia")

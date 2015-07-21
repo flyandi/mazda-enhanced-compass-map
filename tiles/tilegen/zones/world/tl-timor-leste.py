@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,113 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: TL
     # Region Name: Timor-Leste
 
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.096,-9.46093,125.096,-8.79862), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.5294,-9.22972,125.096,-8.51139), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.5294,-9.22972,125.096,-8.51139), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.5294,-9.22972,125.096,-8.51139), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.5294,-9.22972,125.096,-8.51139), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.17732,-9.18557,125.096,-8.64028), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.17732,-9.18557,125.096,-8.64028), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.17732,-9.18557,125.096,-8.64028), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.17732,-9.18557,125.096,-8.64028), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.9983,-9.08834,125.096,-8.525), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.9983,-9.08834,125.096,-8.525), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.9983,-9.08834,125.096,-8.525), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.9983,-9.08834,125.096,-8.525), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.11504,-9.02986,125.096,-8.69111), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.11504,-9.02986,125.096,-8.69111), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.11504,-9.02986,125.096,-8.69111), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.11504,-9.02986,125.096,-8.69111), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.1533,-8.99028,125.096,-8.49917), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.1533,-8.99028,125.096,-8.49917), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.1533,-8.99028,125.096,-8.49917), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.1533,-8.99028,125.096,-8.49917), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.4616,-8.955,125.096,-8.48639), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.4616,-8.955,125.096,-8.48639), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.4616,-8.955,125.096,-8.48639), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.4616,-8.955,125.096,-8.48639), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((124.90624,-8.9382,125.096,-8.79862), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((124.90624,-8.9382,125.096,-8.79862), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((124.90624,-8.9382,125.096,-8.79862), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((124.90624,-8.9382,125.096,-8.79862), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.093,-8.79862,126.9761,-9.46093), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.093,-8.79862,126.9761,-9.46093), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.093,-8.79862,126.9761,-9.46093), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.093,-8.79862,126.9761,-9.46093), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.6452,-8.78195,125.096,-8.48639), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.6452,-8.78195,125.096,-8.48639), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.6452,-8.78195,125.096,-8.48639), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.6452,-8.78195,125.096,-8.48639), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.1061,-8.69111,126.9761,-9.02986), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.1061,-8.69111,126.9761,-9.02986), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.1061,-8.69111,126.9761,-9.02986), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.1061,-8.69111,126.9761,-9.02986), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((127.0153,-8.68278,125.096,-8.315), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((127.0153,-8.68278,125.096,-8.315), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((127.0153,-8.68278,125.096,-8.315), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((127.0153,-8.68278,125.096,-8.315), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.1369,-8.64028,126.9761,-9.02986), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.1369,-8.64028,126.9761,-9.02986), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.1369,-8.64028,126.9761,-9.02986), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.1369,-8.64028,126.9761,-9.02986), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.2294,-8.60973,126.9761,-9.18557), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.2294,-8.60973,126.9761,-9.18557), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.2294,-8.60973,126.9761,-9.18557), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.2294,-8.60973,126.9761,-9.18557), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.0441,-8.525,126.9761,-9.08834), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.0441,-8.525,126.9761,-9.08834), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.0441,-8.525,126.9761,-9.08834), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.0441,-8.525,126.9761,-9.08834), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.7578,-8.51139,125.096,-8.48584), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.7578,-8.51139,125.096,-8.48584), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.7578,-8.51139,125.096,-8.48584), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.7578,-8.51139,125.096,-8.48584), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.2319,-8.49917,126.9761,-8.99028), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.2319,-8.49917,126.9761,-8.99028), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.2319,-8.49917,126.9761,-8.99028), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.2319,-8.49917,126.9761,-8.99028), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.563,-8.48639,125.096,-8.78195), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.563,-8.48639,125.096,-8.78195), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.563,-8.48639,125.096,-8.78195), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.563,-8.48639,125.096,-8.78195), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((125.9264,-8.48584,126.9761,-9.08834), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((125.9264,-8.48584,126.9761,-9.08834), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((125.9264,-8.48584,126.9761,-9.08834), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((125.9264,-8.48584,126.9761,-9.08834), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((127.3044,-8.43361,125.096,-8.39556), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((127.3044,-8.43361,125.096,-8.39556), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((127.3044,-8.43361,125.096,-8.39556), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((127.3044,-8.43361,125.096,-8.39556), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.3589,-8.4275,126.9761,-8.955), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.3589,-8.4275,126.9761,-8.955), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.3589,-8.4275,126.9761,-8.955), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.3589,-8.4275,126.9761,-8.955), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((127.303,-8.39556,125.096,-8.43361), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((127.303,-8.39556,125.096,-8.43361), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((127.303,-8.39556,125.096,-8.43361), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((127.303,-8.39556,125.096,-8.43361), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((127.1064,-8.36639,125.096,-8.68278), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((127.1064,-8.36639,125.096,-8.68278), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((127.1064,-8.36639,125.096,-8.68278), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((127.1064,-8.36639,125.096,-8.68278), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((127.2016,-8.33306,125.096,-8.36639), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((127.2016,-8.33306,125.096,-8.36639), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((127.2016,-8.33306,125.096,-8.36639), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((127.2016,-8.33306,125.096,-8.36639), mapfile, tile_dir, 17, 17, "tl-timor-leste")
-	render_tiles((126.9761,-8.315,125.096,-8.68278), mapfile, tile_dir, 0, 11, "tl-timor-leste")
-	render_tiles((126.9761,-8.315,125.096,-8.68278), mapfile, tile_dir, 13, 13, "tl-timor-leste")
-	render_tiles((126.9761,-8.315,125.096,-8.68278), mapfile, tile_dir, 15, 15, "tl-timor-leste")
-	render_tiles((126.9761,-8.315,125.096,-8.68278), mapfile, tile_dir, 17, 17, "tl-timor-leste")
+    render_tiles((124.90624,-9.46093,127.3044,-8.315), mapfile, tile_dir, 0, 11, "tl-timor-leste")
+    render_tiles((124.90624,-9.46093,127.3044,-8.315), mapfile, tile_dir, 13, 13, "tl-timor-leste")
+    render_tiles((124.90624,-9.46093,127.3044,-8.315), mapfile, tile_dir, 15, 15, "tl-timor-leste")
+    render_tiles((124.90624,-9.46093,127.3044,-8.315), mapfile, tile_dir, 17, 17, "tl-timor-leste")

@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -194,7 +193,15 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
+
+
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
         mapfile = "../../../tilestyles/mazda/mazda.xml"
@@ -202,7 +209,6 @@ if __name__ == "__main__":
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
         tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
@@ -220,43 +226,7 @@ if __name__ == "__main__":
     # Region: BB
     # Region Name: Barbados
 
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.505,13.05694,-59.505,13.21444), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.60361,13.08,-59.505,13.33194), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.60361,13.08,-59.505,13.33194), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.60361,13.08,-59.505,13.33194), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.60361,13.08,-59.505,13.33194), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.45057,13.09944,-59.59584,13.165), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.45057,13.09944,-59.59584,13.165), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.45057,13.09944,-59.59584,13.165), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.45057,13.09944,-59.59584,13.165), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.64223,13.14361,-59.505,13.33139), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.64223,13.14361,-59.505,13.33139), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.64223,13.14361,-59.505,13.33139), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.64223,13.14361,-59.505,13.33139), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.42917,13.165,-59.59584,13.09944), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.42917,13.165,-59.59584,13.09944), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.42917,13.165,-59.59584,13.09944), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.42917,13.165,-59.59584,13.09944), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.52112,13.21444,-59.59584,13.05694), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.52112,13.21444,-59.59584,13.05694), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.52112,13.21444,-59.59584,13.05694), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.52112,13.21444,-59.59584,13.05694), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.65918,13.29305,-59.59584,13.14361), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.65918,13.29305,-59.59584,13.14361), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.65918,13.29305,-59.59584,13.14361), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.65918,13.29305,-59.59584,13.14361), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.64111,13.33139,-59.59584,13.14361), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.64111,13.33139,-59.59584,13.14361), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.64111,13.33139,-59.59584,13.14361), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.64111,13.33139,-59.59584,13.14361), mapfile, tile_dir, 17, 17, "bb-barbados")
-    render_tiles((-59.59584,13.33194,-59.59584,13.08), mapfile, tile_dir, 0, 11, "bb-barbados")
-    render_tiles((-59.59584,13.33194,-59.59584,13.08), mapfile, tile_dir, 13, 13, "bb-barbados")
-    render_tiles((-59.59584,13.33194,-59.59584,13.08), mapfile, tile_dir, 15, 15, "bb-barbados")
-    render_tiles((-59.59584,13.33194,-59.59584,13.08), mapfile, tile_dir, 17, 17, "bb-barbados")
+    render_tiles((-59.65918,13.05694,-59.42917,13.33194), mapfile, tile_dir, 0, 11, "bb-barbados")
+    render_tiles((-59.65918,13.05694,-59.42917,13.33194), mapfile, tile_dir, 13, 13, "bb-barbados")
+    render_tiles((-59.65918,13.05694,-59.42917,13.33194), mapfile, tile_dir, 15, 15, "bb-barbados")
+    render_tiles((-59.65918,13.05694,-59.42917,13.33194), mapfile, tile_dir, 17, 17, "bb-barbados")

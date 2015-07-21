@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -194,7 +193,15 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
+
+
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
         mapfile = "../../../tilestyles/mazda/mazda.xml"
@@ -202,7 +209,6 @@ if __name__ == "__main__":
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
         tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
@@ -220,103 +226,7 @@ if __name__ == "__main__":
     # Region: GQ
     # Region Name: Equatorial Guinea
 
-    render_tiles((11.35389,1.00194,9.80855,1.50305), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((11.35389,1.00194,9.80855,1.50305), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((11.35389,1.00194,9.80855,1.50305), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((11.35389,1.00194,9.80855,1.50305), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((10.01472,1.00194,11.35389,2.16737), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((10.01472,1.00194,11.35389,2.16737), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((10.01472,1.00194,11.35389,2.16737), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((10.01472,1.00194,11.35389,2.16737), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((10.68444,1.0025,11.35389,2.16778), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((10.68444,1.0025,11.35389,2.16778), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((10.68444,1.0025,11.35389,2.16778), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((10.68444,1.0025,11.35389,2.16778), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.8045,1.00255,11.35389,2.34607), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.8045,1.00255,11.35389,2.34607), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.8045,1.00255,11.35389,2.34607), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.8045,1.00255,11.35389,2.34607), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.58055,1.04,9.80855,1.11861), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.58055,1.04,9.80855,1.11861), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.58055,1.04,9.80855,1.11861), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.58055,1.04,9.80855,1.11861), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.84472,1.07917,11.35389,2.2425), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.84472,1.07917,11.35389,2.2425), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.84472,1.07917,11.35389,2.2425), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.84472,1.07917,11.35389,2.2425), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.66833,1.08222,9.80855,1.57083), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.66833,1.08222,9.80855,1.57083), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.66833,1.08222,9.80855,1.57083), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.66833,1.08222,9.80855,1.57083), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.72139,1.09667,9.80855,1.57083), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.72139,1.09667,9.80855,1.57083), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.72139,1.09667,9.80855,1.57083), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.72139,1.09667,9.80855,1.57083), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.39389,1.11167,9.80855,1.18167), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.39389,1.11167,9.80855,1.18167), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.39389,1.11167,9.80855,1.18167), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.39389,1.11167,9.80855,1.18167), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.55111,1.11861,9.80855,1.04), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.55111,1.11861,9.80855,1.04), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.55111,1.11861,9.80855,1.04), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.55111,1.11861,9.80855,1.04), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.5125,1.13389,9.80855,1.11861), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.5125,1.13389,9.80855,1.11861), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.5125,1.13389,9.80855,1.11861), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.5125,1.13389,9.80855,1.11861), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.3575,1.18167,9.80855,1.11167), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.3575,1.18167,9.80855,1.11167), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.3575,1.18167,9.80855,1.11167), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.3575,1.18167,9.80855,1.11167), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((11.34889,1.50305,9.80855,1.00194), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((11.34889,1.50305,9.80855,1.00194), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((11.34889,1.50305,9.80855,1.00194), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((11.34889,1.50305,9.80855,1.00194), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.67444,1.57083,9.80855,1.08222), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.67444,1.57083,9.80855,1.08222), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.67444,1.57083,9.80855,1.08222), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.67444,1.57083,9.80855,1.08222), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.61139,1.58667,9.80855,1.66028), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.61139,1.58667,9.80855,1.66028), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.61139,1.58667,9.80855,1.66028), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.61139,1.58667,9.80855,1.66028), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.63333,1.59167,9.80855,1.66028), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.63333,1.59167,9.80855,1.66028), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.63333,1.59167,9.80855,1.66028), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.63333,1.59167,9.80855,1.66028), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.61194,1.66028,9.80855,1.58667), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.61194,1.66028,9.80855,1.58667), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.61194,1.66028,9.80855,1.58667), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.61194,1.66028,9.80855,1.58667), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.81444,1.93139,11.35389,2.34607), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.81444,1.93139,11.35389,2.34607), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.81444,1.93139,11.35389,2.34607), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.81444,1.93139,11.35389,2.34607), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((10.02291,2.16737,9.80855,1.00194), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((10.67361,2.16778,9.80855,1.0025), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((10.67361,2.16778,9.80855,1.0025), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((10.67361,2.16778,9.80855,1.0025), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((10.67361,2.16778,9.80855,1.0025), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((11.34038,2.16861,9.80855,1.50305), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((11.34038,2.16861,9.80855,1.50305), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((11.34038,2.16861,9.80855,1.50305), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((11.34038,2.16861,9.80855,1.50305), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.85083,2.2425,9.80855,1.07917), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.85083,2.2425,9.80855,1.07917), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.85083,2.2425,9.80855,1.07917), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.85083,2.2425,9.80855,1.07917), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.7725,2.32472,9.80855,1.00255), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.7725,2.32472,9.80855,1.00255), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.7725,2.32472,9.80855,1.00255), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.7725,2.32472,9.80855,1.00255), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
-    render_tiles((9.80855,2.34607,9.80855,1.00255), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
-    render_tiles((9.80855,2.34607,9.80855,1.00255), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
-    render_tiles((9.80855,2.34607,9.80855,1.00255), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
-    render_tiles((9.80855,2.34607,9.80855,1.00255), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")
+    render_tiles((9.3575,1.00194,11.35389,2.34607), mapfile, tile_dir, 0, 11, "gq-equatorial-guinea")
+    render_tiles((9.3575,1.00194,11.35389,2.34607), mapfile, tile_dir, 13, 13, "gq-equatorial-guinea")
+    render_tiles((9.3575,1.00194,11.35389,2.34607), mapfile, tile_dir, 15, 15, "gq-equatorial-guinea")
+    render_tiles((9.3575,1.00194,11.35389,2.34607), mapfile, tile_dir, 17, 17, "gq-equatorial-guinea")

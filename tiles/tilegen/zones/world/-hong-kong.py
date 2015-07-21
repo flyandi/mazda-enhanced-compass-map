@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,61 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: 
     # Region Name: Hong Kong
 
-	render_tiles((113.8813,22.14388,113.8813,22.46138), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((113.8813,22.14388,113.8813,22.46138), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((113.8813,22.14388,113.8813,22.46138), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((113.8813,22.14388,113.8813,22.46138), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.5025,22.14388,113.8813,22.44809), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.5025,22.14388,113.8813,22.44809), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.5025,22.14388,113.8813,22.44809), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.5025,22.14388,113.8813,22.44809), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((113.8219,22.21832,113.8813,22.45939), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((113.8219,22.21832,113.8813,22.45939), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((113.8219,22.21832,113.8813,22.45939), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((113.8219,22.21832,113.8813,22.45939), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.4983,22.44809,114.3569,22.14388), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.4983,22.44809,114.3569,22.14388), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.4983,22.44809,114.3569,22.14388), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.4983,22.44809,114.3569,22.14388), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((113.8608,22.45939,113.8813,22.46138), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((113.8608,22.45939,113.8813,22.46138), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((113.8608,22.45939,113.8813,22.46138), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((113.8608,22.45939,113.8813,22.46138), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((113.8625,22.46138,113.8813,22.45939), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((113.8625,22.46138,113.8813,22.45939), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((113.8625,22.46138,113.8813,22.45939), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((113.8625,22.46138,113.8813,22.45939), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.03134,22.51047,113.8813,22.51116), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.03224,22.51116,113.8813,22.51047), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.03224,22.51116,113.8813,22.51047), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.03224,22.51116,113.8813,22.51047), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.03224,22.51116,113.8813,22.51047), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.22119,22.54885,113.8813,22.54933), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.22119,22.54885,113.8813,22.54933), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.22119,22.54885,113.8813,22.54933), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.22119,22.54885,113.8813,22.54933), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.22359,22.54933,113.8813,22.54885), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.22359,22.54933,113.8813,22.54885), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.22359,22.54933,113.8813,22.54885), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.22359,22.54933,113.8813,22.54885), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.4619,22.55916,113.8813,22.44809), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.4619,22.55916,113.8813,22.44809), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.4619,22.55916,113.8813,22.44809), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.4619,22.55916,113.8813,22.44809), mapfile, tile_dir, 17, 17, "-hong-kong")
-	render_tiles((114.3569,22.60805,113.8813,22.55916), mapfile, tile_dir, 0, 11, "-hong-kong")
-	render_tiles((114.3569,22.60805,113.8813,22.55916), mapfile, tile_dir, 13, 13, "-hong-kong")
-	render_tiles((114.3569,22.60805,113.8813,22.55916), mapfile, tile_dir, 15, 15, "-hong-kong")
-	render_tiles((114.3569,22.60805,113.8813,22.55916), mapfile, tile_dir, 17, 17, "-hong-kong")
+    render_tiles((113.8219,22.14388,114.5025,22.60805), mapfile, tile_dir, 0, 11, "-hong-kong")
+    render_tiles((113.8219,22.14388,114.5025,22.60805), mapfile, tile_dir, 13, 13, "-hong-kong")
+    render_tiles((113.8219,22.14388,114.5025,22.60805), mapfile, tile_dir, 15, 15, "-hong-kong")
+    render_tiles((113.8219,22.14388,114.5025,22.60805), mapfile, tile_dir, 17, 17, "-hong-kong")

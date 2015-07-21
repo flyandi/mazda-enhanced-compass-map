@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,141 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: JM
     # Region Name: Jamaica
 
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.16862,17.69666,-77.8714,17.87472), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.12723,17.71805,-77.8714,17.74027), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.12723,17.71805,-77.8714,17.74027), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.12723,17.71805,-77.8714,17.74027), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.12723,17.71805,-77.8714,17.74027), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.13306,17.74027,-77.8714,17.87472), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.13306,17.74027,-77.8714,17.87472), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.13306,17.74027,-77.8714,17.87472), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.13306,17.74027,-77.8714,17.87472), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.21306,17.77111,-77.8714,17.69666), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.21306,17.77111,-77.8714,17.69666), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.21306,17.77111,-77.8714,17.69666), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.21306,17.77111,-77.8714,17.69666), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.30139,17.79194,-77.16862,18.45833), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.30139,17.79194,-77.16862,18.45833), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.30139,17.79194,-77.16862,18.45833), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.30139,17.79194,-77.16862,18.45833), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.03223,17.84277,-77.8714,17.90194), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.03223,17.84277,-77.8714,17.90194), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.03223,17.84277,-77.8714,17.90194), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.03223,17.84277,-77.8714,17.90194), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.92084,17.84389,-77.8714,17.90583), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.92084,17.84389,-77.8714,17.90583), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.92084,17.84389,-77.8714,17.90583), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.92084,17.84389,-77.8714,17.90583), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.71973,17.84722,-77.8714,17.94444), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.71973,17.84722,-77.8714,17.94444), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.71973,17.84722,-77.8714,17.94444), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.71973,17.84722,-77.8714,17.94444), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.41223,17.85972,-77.16862,18.45833), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.41223,17.85972,-77.16862,18.45833), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.41223,17.85972,-77.16862,18.45833), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.41223,17.85972,-77.16862,18.45833), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.5914,17.86083,-77.16862,18.22305), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.5914,17.86083,-77.16862,18.22305), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.5914,17.86083,-77.16862,18.22305), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.5914,17.86083,-77.16862,18.22305), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.30667,17.86555,-77.16862,18.14972), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.30667,17.86555,-77.16862,18.14972), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.30667,17.86555,-77.16862,18.14972), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.30667,17.86555,-77.16862,18.14972), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.13667,17.87472,-77.8714,17.74027), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.13667,17.87472,-77.8714,17.74027), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.13667,17.87472,-77.8714,17.74027), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.13667,17.87472,-77.8714,17.74027), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.07584,17.90194,-77.8714,17.84277), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.07584,17.90194,-77.8714,17.84277), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.07584,17.90194,-77.8714,17.84277), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.07584,17.90194,-77.8714,17.84277), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.89001,17.90583,-77.8714,17.84389), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.89001,17.90583,-77.8714,17.84389), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.89001,17.90583,-77.8714,17.84389), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.89001,17.90583,-77.8714,17.84389), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.18861,17.91472,-77.8714,17.86555), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.18861,17.91472,-77.8714,17.86555), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.18861,17.91472,-77.8714,17.86555), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.18861,17.91472,-77.8714,17.86555), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.68834,17.9361,-77.16862,18.22305), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.68834,17.9361,-77.16862,18.22305), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.68834,17.9361,-77.16862,18.22305), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.68834,17.9361,-77.16862,18.22305), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.83528,17.94444,-77.8714,18.0025), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.83528,17.94444,-77.8714,18.0025), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.83528,17.94444,-77.8714,18.0025), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.83528,17.94444,-77.8714,18.0025), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.82973,17.98722,-77.16862,18.33444), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.82973,17.98722,-77.16862,18.33444), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.82973,17.98722,-77.16862,18.33444), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.82973,17.98722,-77.16862,18.33444), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.84084,18.0025,-77.8714,17.94444), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.84084,18.0025,-77.8714,17.94444), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.84084,18.0025,-77.8714,17.94444), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.84084,18.0025,-77.8714,17.94444), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-78.01695,18.10722,-77.16862,18.18694), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-78.01695,18.10722,-77.16862,18.18694), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-78.01695,18.10722,-77.16862,18.18694), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-78.01695,18.10722,-77.16862,18.18694), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.34167,18.14972,-77.8714,17.86555), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.34167,18.14972,-77.8714,17.86555), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.34167,18.14972,-77.8714,17.86555), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.34167,18.14972,-77.8714,17.86555), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-78.04501,18.18694,-77.8714,18.10722), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-78.04501,18.18694,-77.8714,18.10722), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-78.04501,18.18694,-77.8714,18.10722), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-78.04501,18.18694,-77.8714,18.10722), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-78.18195,18.20028,-77.16862,18.44749), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-78.18195,18.20028,-77.16862,18.44749), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-78.18195,18.20028,-77.16862,18.44749), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-78.18195,18.20028,-77.16862,18.44749), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-78.32529,18.21472,-77.16862,18.26277), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-78.32529,18.21472,-77.16862,18.26277), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-78.32529,18.21472,-77.16862,18.26277), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-78.32529,18.21472,-77.16862,18.26277), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.64029,18.22305,-77.8714,17.9361), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.64029,18.22305,-77.8714,17.9361), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.64029,18.22305,-77.8714,17.9361), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.64029,18.22305,-77.8714,17.9361), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-78.37279,18.26277,-77.16862,18.21472), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-78.37279,18.26277,-77.16862,18.21472), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-78.37279,18.26277,-77.16862,18.21472), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-78.37279,18.26277,-77.16862,18.21472), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-76.83556,18.33444,-77.8714,17.98722), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-76.83556,18.33444,-77.8714,17.98722), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-76.83556,18.33444,-77.8714,17.98722), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-76.83556,18.33444,-77.8714,17.98722), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.95695,18.43833,-77.16862,18.49611), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.95695,18.43833,-77.16862,18.49611), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.95695,18.43833,-77.16862,18.49611), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.95695,18.43833,-77.16862,18.49611), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-78.21806,18.44749,-77.16862,18.20028), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-78.21806,18.44749,-77.16862,18.20028), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-78.21806,18.44749,-77.16862,18.20028), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-78.21806,18.44749,-77.16862,18.20028), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.32362,18.45833,-77.8714,17.79194), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.32362,18.45833,-77.8714,17.79194), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.32362,18.45833,-77.8714,17.79194), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.32362,18.45833,-77.8714,17.79194), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.9364,18.49611,-77.16862,18.43833), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.9364,18.49611,-77.16862,18.43833), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.9364,18.49611,-77.16862,18.43833), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.9364,18.49611,-77.16862,18.43833), mapfile, tile_dir, 17, 17, "jm-jamaica")
-	render_tiles((-77.8714,18.52194,-77.8714,18.0025), mapfile, tile_dir, 0, 11, "jm-jamaica")
-	render_tiles((-77.8714,18.52194,-77.8714,18.0025), mapfile, tile_dir, 13, 13, "jm-jamaica")
-	render_tiles((-77.8714,18.52194,-77.8714,18.0025), mapfile, tile_dir, 15, 15, "jm-jamaica")
-	render_tiles((-77.8714,18.52194,-77.8714,18.0025), mapfile, tile_dir, 17, 17, "jm-jamaica")
+    render_tiles((-78.37279,17.69666,-76.18861,18.52194), mapfile, tile_dir, 0, 11, "jm-jamaica")
+    render_tiles((-78.37279,17.69666,-76.18861,18.52194), mapfile, tile_dir, 13, 13, "jm-jamaica")
+    render_tiles((-78.37279,17.69666,-76.18861,18.52194), mapfile, tile_dir, 15, 15, "jm-jamaica")
+    render_tiles((-78.37279,17.69666,-76.18861,18.52194), mapfile, tile_dir, 17, 17, "jm-jamaica")

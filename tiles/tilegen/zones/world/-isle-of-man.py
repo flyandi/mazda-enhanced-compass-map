@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,53 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: 
     # Region Name: Isle of Man
 
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.78417,54.05693,-4.35306,54.21443), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.65417,54.06165,-4.78417,54.24888), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.65417,54.06165,-4.78417,54.24888), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.65417,54.06165,-4.78417,54.24888), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.65417,54.06165,-4.78417,54.24888), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.39444,54.18638,-4.78417,54.35165), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.39444,54.18638,-4.78417,54.35165), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.39444,54.18638,-4.78417,54.35165), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.39444,54.18638,-4.78417,54.35165), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.71417,54.21443,-4.35306,54.06165), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.71417,54.21443,-4.35306,54.06165), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.71417,54.21443,-4.35306,54.06165), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.71417,54.21443,-4.35306,54.06165), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.62528,54.24888,-4.35306,54.06165), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.62528,54.24888,-4.35306,54.06165), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.62528,54.24888,-4.35306,54.06165), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.62528,54.24888,-4.35306,54.06165), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.30861,54.30054,-4.78417,54.40916), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.30861,54.30054,-4.78417,54.40916), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.30861,54.30054,-4.78417,54.40916), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.30861,54.30054,-4.78417,54.40916), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.36222,54.31638,-4.78417,54.40916), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.36222,54.31638,-4.78417,54.40916), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.36222,54.31638,-4.78417,54.40916), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.36222,54.31638,-4.78417,54.40916), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.37639,54.35165,-4.78417,54.31638), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.37639,54.35165,-4.78417,54.31638), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.37639,54.35165,-4.78417,54.31638), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.37639,54.35165,-4.78417,54.31638), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.53139,54.36471,-4.78417,54.24888), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.53139,54.36471,-4.78417,54.24888), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.53139,54.36471,-4.78417,54.24888), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.53139,54.36471,-4.78417,54.24888), mapfile, tile_dir, 17, 17, "-isle-of-man")
-	render_tiles((-4.35306,54.40916,-4.78417,54.31638), mapfile, tile_dir, 0, 11, "-isle-of-man")
-	render_tiles((-4.35306,54.40916,-4.78417,54.31638), mapfile, tile_dir, 13, 13, "-isle-of-man")
-	render_tiles((-4.35306,54.40916,-4.78417,54.31638), mapfile, tile_dir, 15, 15, "-isle-of-man")
-	render_tiles((-4.35306,54.40916,-4.78417,54.31638), mapfile, tile_dir, 17, 17, "-isle-of-man")
+    render_tiles((-4.78417,54.05693,-4.30861,54.40916), mapfile, tile_dir, 0, 11, "-isle-of-man")
+    render_tiles((-4.78417,54.05693,-4.30861,54.40916), mapfile, tile_dir, 13, 13, "-isle-of-man")
+    render_tiles((-4.78417,54.05693,-4.30861,54.40916), mapfile, tile_dir, 15, 15, "-isle-of-man")
+    render_tiles((-4.78417,54.05693,-4.30861,54.40916), mapfile, tile_dir, 17, 17, "-isle-of-man")

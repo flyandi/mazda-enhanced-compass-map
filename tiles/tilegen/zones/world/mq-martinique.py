@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,93 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: MQ
     # Region Name: Martinique
 
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.85528,14.40305,-61.165,14.45889), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.88473,14.42639,-60.85528,14.77333), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.88473,14.42639,-60.85528,14.77333), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.88473,14.42639,-60.85528,14.77333), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.88473,14.42639,-60.85528,14.77333), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.0575,14.45778,-61.165,14.55889), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.0575,14.45778,-61.165,14.55889), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.0575,14.45778,-61.165,14.55889), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.0575,14.45778,-61.165,14.55889), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.85751,14.45889,-61.165,14.40305), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.85751,14.45889,-61.165,14.40305), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.85751,14.45889,-61.165,14.40305), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.85751,14.45889,-61.165,14.40305), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.81001,14.46333,-61.165,14.54028), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.81001,14.46333,-61.165,14.54028), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.81001,14.46333,-61.165,14.54028), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.81001,14.46333,-61.165,14.54028), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.02167,14.47444,-61.165,14.60861), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.02167,14.47444,-61.165,14.60861), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.02167,14.47444,-61.165,14.60861), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.02167,14.47444,-61.165,14.60861), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.1025,14.51305,-61.165,14.60055), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.1025,14.51305,-61.165,14.60055), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.1025,14.51305,-61.165,14.60055), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.1025,14.51305,-61.165,14.60055), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.82973,14.54028,-61.165,14.46333), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.82973,14.54028,-61.165,14.46333), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.82973,14.54028,-61.165,14.46333), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.82973,14.54028,-61.165,14.46333), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.99695,14.5475,-60.85528,14.78028), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.99695,14.5475,-60.85528,14.78028), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.99695,14.5475,-60.85528,14.78028), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.99695,14.5475,-60.85528,14.78028), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.04528,14.55889,-61.165,14.45778), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.04528,14.55889,-61.165,14.45778), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.04528,14.55889,-61.165,14.45778), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.04528,14.55889,-61.165,14.45778), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.09167,14.60055,-61.165,14.51305), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.09167,14.60055,-61.165,14.51305), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.09167,14.60055,-61.165,14.51305), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.09167,14.60055,-61.165,14.51305), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.87195,14.60222,-60.85528,14.77333), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.87195,14.60222,-60.85528,14.77333), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.87195,14.60222,-60.85528,14.77333), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.87195,14.60222,-60.85528,14.77333), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.01723,14.60861,-61.165,14.47444), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.01723,14.60861,-61.165,14.47444), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.01723,14.60861,-61.165,14.47444), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.01723,14.60861,-61.165,14.47444), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.94083,14.74083,-60.85528,14.76278), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.94083,14.74083,-60.85528,14.76278), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.94083,14.74083,-60.85528,14.76278), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.94083,14.74083,-60.85528,14.76278), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.93639,14.76278,-60.85528,14.74083), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.93639,14.76278,-60.85528,14.74083), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.93639,14.76278,-60.85528,14.74083), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.93639,14.76278,-60.85528,14.74083), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.87806,14.77333,-61.165,14.60222), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.87806,14.77333,-61.165,14.60222), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.87806,14.77333,-61.165,14.60222), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.87806,14.77333,-61.165,14.60222), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-60.97696,14.78028,-61.165,14.5475), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-60.97696,14.78028,-61.165,14.5475), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-60.97696,14.78028,-61.165,14.5475), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-60.97696,14.78028,-61.165,14.5475), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.22945,14.805,-60.85528,14.85889), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.22945,14.805,-60.85528,14.85889), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.22945,14.805,-60.85528,14.85889), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.22945,14.805,-60.85528,14.85889), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.19862,14.85889,-60.85528,14.805), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.19862,14.85889,-60.85528,14.805), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.19862,14.85889,-60.85528,14.805), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.19862,14.85889,-60.85528,14.805), mapfile, tile_dir, 17, 17, "mq-martinique")
-	render_tiles((-61.165,14.88028,-60.85528,14.85889), mapfile, tile_dir, 0, 11, "mq-martinique")
-	render_tiles((-61.165,14.88028,-60.85528,14.85889), mapfile, tile_dir, 13, 13, "mq-martinique")
-	render_tiles((-61.165,14.88028,-60.85528,14.85889), mapfile, tile_dir, 15, 15, "mq-martinique")
-	render_tiles((-61.165,14.88028,-60.85528,14.85889), mapfile, tile_dir, 17, 17, "mq-martinique")
+    render_tiles((-61.22945,14.40305,-60.81001,14.88028), mapfile, tile_dir, 0, 11, "mq-martinique")
+    render_tiles((-61.22945,14.40305,-60.81001,14.88028), mapfile, tile_dir, 13, 13, "mq-martinique")
+    render_tiles((-61.22945,14.40305,-60.81001,14.88028), mapfile, tile_dir, 15, 15, "mq-martinique")
+    render_tiles((-61.22945,14.40305,-60.81001,14.88028), mapfile, tile_dir, 17, 17, "mq-martinique")

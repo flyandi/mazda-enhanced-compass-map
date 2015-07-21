@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,81 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: GP
     # Region Name: Guadeloupe
 
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.68056,15.95,-61.68056,16.36222), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.55945,16.03388,-61.68056,16.28527), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.55945,16.03388,-61.68056,16.28527), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.55945,16.03388,-61.68056,16.28527), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.55945,16.03388,-61.68056,16.28527), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.75695,16.04777,-61.68056,16.36222), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.75695,16.04777,-61.68056,16.36222), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.75695,16.04777,-61.68056,16.36222), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.75695,16.04777,-61.68056,16.36222), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.54778,16.28527,-61.73083,16.03388), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.54778,16.28527,-61.73083,16.03388), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.54778,16.28527,-61.73083,16.03388), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.54778,16.28527,-61.73083,16.03388), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.78362,16.33305,-61.73083,16.04777), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.78362,16.33305,-61.73083,16.04777), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.78362,16.33305,-61.73083,16.04777), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.78362,16.33305,-61.73083,16.04777), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.73083,16.36222,-61.73083,16.04777), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.73083,16.36222,-61.73083,16.04777), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.73083,16.36222,-61.73083,16.04777), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.73083,16.36222,-61.73083,16.04777), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.40131,16.19999,-61.40131,16.51361), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.46659,16.22499,-61.40131,16.39305), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.46659,16.22499,-61.40131,16.39305), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.46659,16.22499,-61.40131,16.39305), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.46659,16.22499,-61.40131,16.39305), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.14743,16.2486,-61.40714,16.25889), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.14743,16.2486,-61.40714,16.25889), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.14743,16.2486,-61.40714,16.25889), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.14743,16.2486,-61.40714,16.25889), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.10992,16.25889,-61.40714,16.2486), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.10992,16.25889,-61.40714,16.2486), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.10992,16.25889,-61.40714,16.2486), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.10992,16.25889,-61.40714,16.2486), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.48964,16.26305,-61.40131,16.45194), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.48964,16.26305,-61.40131,16.45194), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.48964,16.26305,-61.40131,16.45194), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.48964,16.26305,-61.40131,16.45194), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.33548,16.37888,-61.40131,16.47666), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.33548,16.37888,-61.40131,16.47666), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.33548,16.37888,-61.40131,16.47666), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.33548,16.37888,-61.40131,16.47666), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.46354,16.39305,-61.40714,16.22499), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.46354,16.39305,-61.40714,16.22499), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.46354,16.39305,-61.40714,16.22499), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.46354,16.39305,-61.40714,16.22499), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.47242,16.45194,-61.40714,16.22499), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.47242,16.45194,-61.40714,16.22499), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.47242,16.45194,-61.40714,16.22499), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.47242,16.45194,-61.40714,16.22499), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.34881,16.47666,-61.40131,16.37888), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.34881,16.47666,-61.40131,16.37888), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.34881,16.47666,-61.40131,16.37888), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.34881,16.47666,-61.40131,16.37888), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
-	render_tiles((-61.40714,16.51361,-61.40714,16.19999), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
-	render_tiles((-61.40714,16.51361,-61.40714,16.19999), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
-	render_tiles((-61.40714,16.51361,-61.40714,16.19999), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
-	render_tiles((-61.40714,16.51361,-61.40714,16.19999), mapfile, tile_dir, 17, 17, "gp-guadeloupe")
+    render_tiles((-61.78362,15.95,-61.10992,16.51361), mapfile, tile_dir, 0, 11, "gp-guadeloupe")
+    render_tiles((-61.78362,15.95,-61.10992,16.51361), mapfile, tile_dir, 13, 13, "gp-guadeloupe")
+    render_tiles((-61.78362,15.95,-61.10992,16.51361), mapfile, tile_dir, 15, 15, "gp-guadeloupe")
+    render_tiles((-61.78362,15.95,-61.10992,16.51361), mapfile, tile_dir, 17, 17, "gp-guadeloupe")

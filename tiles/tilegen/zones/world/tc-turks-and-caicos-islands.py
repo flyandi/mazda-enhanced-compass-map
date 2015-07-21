@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,69 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: TC
     # Region Name: Turks and Caicos Islands
 
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66278,20.91527,-73.02473,21.04083), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.45279,20.92472,-73.66278,21.23), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.45279,20.92472,-73.66278,21.23), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.45279,20.92472,-73.66278,21.23), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.45279,20.92472,-73.66278,21.23), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14806,20.97555,-73.66278,21.18111), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14806,20.97555,-73.66278,21.18111), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14806,20.97555,-73.66278,21.18111), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14806,20.97555,-73.66278,21.18111), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.70612,21.0261,-73.02473,20.91527), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.70612,21.0261,-73.02473,20.91527), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.70612,21.0261,-73.02473,20.91527), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.70612,21.0261,-73.02473,20.91527), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66028,21.04083,-73.02473,20.91527), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66028,21.04083,-73.02473,20.91527), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66028,21.04083,-73.02473,20.91527), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.66028,21.04083,-73.02473,20.91527), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.65417,21.07694,-73.02473,21.04083), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.65417,21.07694,-73.02473,21.04083), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.65417,21.07694,-73.02473,21.04083), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.65417,21.07694,-73.02473,21.04083), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.60529,21.12249,-73.02473,21.07694), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.60529,21.12249,-73.02473,21.07694), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.60529,21.12249,-73.02473,21.07694), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.60529,21.12249,-73.02473,21.07694), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.27196,21.13833,-73.66278,21.23), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.27196,21.13833,-73.66278,21.23), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.27196,21.13833,-73.66278,21.23), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.27196,21.13833,-73.66278,21.23), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.03473,21.14388,-73.66278,21.33249), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.03473,21.14388,-73.66278,21.33249), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.03473,21.14388,-73.66278,21.33249), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.03473,21.14388,-73.66278,21.33249), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14612,21.18111,-73.02473,20.97555), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14612,21.18111,-73.02473,20.97555), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14612,21.18111,-73.02473,20.97555), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.14612,21.18111,-73.02473,20.97555), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.39362,21.23,-73.02473,20.92472), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.39362,21.23,-73.02473,20.92472), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.39362,21.23,-73.02473,20.92472), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.39362,21.23,-73.02473,20.92472), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.00279,21.31166,-73.66278,21.33249), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.00279,21.31166,-73.66278,21.33249), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.00279,21.31166,-73.66278,21.33249), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.00279,21.31166,-73.66278,21.33249), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.07028,21.31666,-73.66278,21.14388), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.07028,21.31666,-73.66278,21.14388), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.07028,21.31666,-73.66278,21.14388), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.07028,21.31666,-73.66278,21.14388), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
-	render_tiles((-73.02473,21.33249,-73.66278,21.14388), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
-	render_tiles((-73.02473,21.33249,-73.66278,21.14388), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
-	render_tiles((-73.02473,21.33249,-73.66278,21.14388), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
-	render_tiles((-73.02473,21.33249,-73.66278,21.14388), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")
+    render_tiles((-73.70612,20.91527,-73.00279,21.33249), mapfile, tile_dir, 0, 11, "tc-turks-and-caicos-islands")
+    render_tiles((-73.70612,20.91527,-73.00279,21.33249), mapfile, tile_dir, 13, 13, "tc-turks-and-caicos-islands")
+    render_tiles((-73.70612,20.91527,-73.00279,21.33249), mapfile, tile_dir, 15, 15, "tc-turks-and-caicos-islands")
+    render_tiles((-73.70612,20.91527,-73.00279,21.33249), mapfile, tile_dir, 17, 17, "tc-turks-and-caicos-islands")

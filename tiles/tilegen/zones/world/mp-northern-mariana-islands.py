@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,61 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: MP
     # Region Name: Northern Mariana Islands
 
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.7205,13.2375,144.8855,13.26694), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.6805,13.24694,144.8855,13.2375), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.6805,13.24694,144.8855,13.2375), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.6805,13.24694,144.8855,13.2375), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.6805,13.24694,144.8855,13.2375), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.75191,13.26694,144.7205,13.49694), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.75191,13.26694,144.7205,13.49694), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.75191,13.26694,144.7205,13.49694), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.75191,13.26694,144.7205,13.49694), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.62801,13.33416,144.7205,13.43639), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.62801,13.33416,144.7205,13.43639), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.62801,13.33416,144.7205,13.43639), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.62801,13.33416,144.7205,13.43639), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.7861,13.42027,144.7205,13.54417), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.7861,13.42027,144.7205,13.54417), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.7861,13.42027,144.7205,13.54417), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.7861,13.42027,144.7205,13.54417), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.623,13.43639,144.8855,13.33416), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.623,13.43639,144.8855,13.33416), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.623,13.43639,144.8855,13.33416), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.623,13.43639,144.8855,13.33416), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.76221,13.49694,144.8855,13.26694), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.76221,13.49694,144.8855,13.26694), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.76221,13.49694,144.8855,13.26694), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.76221,13.49694,144.8855,13.26694), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.8916,13.4975,144.7205,13.63472), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.8916,13.4975,144.7205,13.63472), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.8916,13.4975,144.7205,13.63472), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.8916,13.4975,144.7205,13.63472), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.8094,13.54417,144.8855,13.42027), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.8094,13.54417,144.8855,13.42027), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.8094,13.54417,144.8855,13.42027), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.8094,13.54417,144.8855,13.42027), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.95329,13.59083,144.7205,13.4975), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.95329,13.59083,144.7205,13.4975), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.95329,13.59083,144.7205,13.4975), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.95329,13.59083,144.7205,13.4975), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.84019,13.63416,144.7205,13.54417), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.84019,13.63416,144.7205,13.54417), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.84019,13.63416,144.7205,13.54417), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.84019,13.63416,144.7205,13.54417), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
-	render_tiles((144.8855,13.63472,144.7205,13.4975), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
-	render_tiles((144.8855,13.63472,144.7205,13.4975), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
-	render_tiles((144.8855,13.63472,144.7205,13.4975), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
-	render_tiles((144.8855,13.63472,144.7205,13.4975), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")
+    render_tiles((144.623,13.2375,144.95329,13.63472), mapfile, tile_dir, 0, 11, "mp-northern-mariana-islands")
+    render_tiles((144.623,13.2375,144.95329,13.63472), mapfile, tile_dir, 13, 13, "mp-northern-mariana-islands")
+    render_tiles((144.623,13.2375,144.95329,13.63472), mapfile, tile_dir, 15, 15, "mp-northern-mariana-islands")
+    render_tiles((144.623,13.2375,144.95329,13.63472), mapfile, tile_dir, 17, 17, "mp-northern-mariana-islands")

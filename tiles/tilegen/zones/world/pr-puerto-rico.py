@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,109 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: PR
     # Region Name: Puerto Rico
 
-	render_tiles((-66.23779,17.92805,-67.14223,17.97638), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.23779,17.92805,-67.14223,17.97638), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.23779,17.92805,-67.14223,17.97638), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.23779,17.92805,-67.14223,17.97638), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.93306,17.92805,-67.14223,17.96111), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.18723,17.9325,-66.23779,18.47583), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.18723,17.9325,-66.23779,18.47583), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.18723,17.9325,-66.23779,18.47583), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.18723,17.9325,-66.23779,18.47583), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.39056,17.93972,-67.14223,17.97638), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.39056,17.93972,-67.14223,17.97638), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.39056,17.93972,-67.14223,17.97638), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.39056,17.93972,-67.14223,17.97638), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.09195,17.96111,-66.23779,18.51139), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.09195,17.96111,-66.23779,18.51139), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.09195,17.96111,-66.23779,18.51139), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.09195,17.96111,-66.23779,18.51139), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-65.92751,17.97028,-66.23779,18.43944), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-65.92751,17.97028,-66.23779,18.43944), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-65.92751,17.97028,-66.23779,18.43944), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-65.92751,17.97028,-66.23779,18.43944), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.33556,17.97638,-67.14223,17.93972), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.33556,17.97638,-67.14223,17.93972), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.33556,17.97638,-67.14223,17.93972), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.33556,17.97638,-67.14223,17.93972), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.76306,17.97861,-67.14223,17.92805), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.76306,17.97861,-67.14223,17.92805), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.76306,17.97861,-67.14223,17.92805), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.76306,17.97861,-67.14223,17.92805), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.20197,17.98583,-67.14223,17.9325), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.20197,17.98583,-67.14223,17.9325), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.20197,17.98583,-67.14223,17.9325), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.20197,17.98583,-67.14223,17.9325), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.4653,17.98666,-67.14223,17.93972), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.4653,17.98666,-67.14223,17.93972), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.4653,17.98666,-67.14223,17.93972), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.4653,17.98666,-67.14223,17.93972), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-65.75111,18.16194,-66.23779,18.43944), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-65.75111,18.16194,-66.23779,18.43944), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-65.75111,18.16194,-66.23779,18.43944), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-65.75111,18.16194,-66.23779,18.43944), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.14612,18.19971,-66.23779,18.51139), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.14612,18.19971,-66.23779,18.51139), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.14612,18.19971,-66.23779,18.51139), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.14612,18.19971,-66.23779,18.51139), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-65.64584,18.20527,-66.23779,18.38583), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-65.64584,18.20527,-66.23779,18.38583), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-65.64584,18.20527,-66.23779,18.38583), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-65.64584,18.20527,-66.23779,18.38583), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.25917,18.37555,-67.14223,17.98583), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.25917,18.37555,-67.14223,17.98583), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.25917,18.37555,-67.14223,17.98583), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.25917,18.37555,-67.14223,17.98583), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-65.62584,18.38583,-67.14223,18.20527), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-65.62584,18.38583,-67.14223,18.20527), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-65.62584,18.38583,-67.14223,18.20527), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-65.62584,18.38583,-67.14223,18.20527), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.17668,18.40027,-66.23779,18.47583), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.17668,18.40027,-66.23779,18.47583), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.17668,18.40027,-66.23779,18.47583), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.17668,18.40027,-66.23779,18.47583), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.10779,18.41888,-66.23779,18.46444), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.10779,18.41888,-66.23779,18.46444), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.10779,18.41888,-66.23779,18.46444), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.10779,18.41888,-66.23779,18.46444), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.0564,18.42972,-66.23779,18.41888), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.0564,18.42972,-66.23779,18.41888), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.0564,18.42972,-66.23779,18.41888), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.0564,18.42972,-66.23779,18.41888), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-65.85306,18.43944,-67.14223,17.97028), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-65.85306,18.43944,-67.14223,17.97028), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-65.85306,18.43944,-67.14223,17.97028), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-65.85306,18.43944,-67.14223,17.97028), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.11584,18.46444,-66.23779,18.41888), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.11584,18.46444,-66.23779,18.41888), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.11584,18.46444,-66.23779,18.41888), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.11584,18.46444,-66.23779,18.41888), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.17807,18.47583,-66.23779,18.40027), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.17807,18.47583,-66.23779,18.40027), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.17807,18.47583,-66.23779,18.40027), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.17807,18.47583,-66.23779,18.40027), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.13695,18.47861,-66.23779,18.46444), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.13695,18.47861,-66.23779,18.46444), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.13695,18.47861,-66.23779,18.46444), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.13695,18.47861,-66.23779,18.46444), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-66.55724,18.48389,-67.14223,17.98666), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-66.55724,18.48389,-67.14223,17.98666), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-66.55724,18.48389,-67.14223,17.98666), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-66.55724,18.48389,-67.14223,17.98666), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
-	render_tiles((-67.14223,18.51139,-67.14223,18.19971), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
-	render_tiles((-67.14223,18.51139,-67.14223,18.19971), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
-	render_tiles((-67.14223,18.51139,-67.14223,18.19971), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
-	render_tiles((-67.14223,18.51139,-67.14223,18.19971), mapfile, tile_dir, 17, 17, "pr-puerto-rico")
+    render_tiles((-67.25917,17.92805,-65.62584,18.51139), mapfile, tile_dir, 0, 11, "pr-puerto-rico")
+    render_tiles((-67.25917,17.92805,-65.62584,18.51139), mapfile, tile_dir, 13, 13, "pr-puerto-rico")
+    render_tiles((-67.25917,17.92805,-65.62584,18.51139), mapfile, tile_dir, 15, 15, "pr-puerto-rico")
+    render_tiles((-67.25917,17.92805,-65.62584,18.51139), mapfile, tile_dir, 17, 17, "pr-puerto-rico")

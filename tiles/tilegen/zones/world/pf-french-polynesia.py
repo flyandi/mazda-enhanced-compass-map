@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -194,7 +193,15 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
+
+
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
         mapfile = "../../../tilestyles/mazda/mazda.xml"
@@ -202,7 +209,6 @@ if __name__ == "__main__":
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
         tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
@@ -220,63 +226,7 @@ if __name__ == "__main__":
     # Region: PF
     # Region Name: French Polynesia
 
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.1792,-17.87084,-149.51669,-17.72917), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.15781,-17.84973,-149.51669,-17.77945), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.15781,-17.84973,-149.51669,-17.77945), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.15781,-17.84973,-149.51669,-17.77945), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.15781,-17.84973,-149.51669,-17.77945), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.27499,-17.84723,-149.51669,-17.70139), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.27499,-17.84723,-149.51669,-17.70139), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.27499,-17.84723,-149.51669,-17.70139), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.27499,-17.84723,-149.51669,-17.70139), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.1489,-17.77945,-149.51669,-17.84973), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.1489,-17.77945,-149.51669,-17.84973), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.1489,-17.77945,-149.51669,-17.84973), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.1489,-17.77945,-149.51669,-17.84973), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.4659,-17.76556,-149.1792,-17.50751), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.4659,-17.76556,-149.1792,-17.50751), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.4659,-17.76556,-149.1792,-17.50751), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.4659,-17.76556,-149.1792,-17.50751), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.5883,-17.735,-149.1792,-17.55), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.5883,-17.735,-149.1792,-17.55), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.5883,-17.735,-149.1792,-17.55), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.5883,-17.735,-149.1792,-17.55), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.1819,-17.72917,-149.51669,-17.87084), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.1819,-17.72917,-149.51669,-17.87084), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.1819,-17.72917,-149.51669,-17.87084), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.1819,-17.72917,-149.51669,-17.87084), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.3461,-17.72028,-149.1792,-17.54362), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.3461,-17.72028,-149.1792,-17.54362), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.3461,-17.72028,-149.1792,-17.54362), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.3461,-17.72028,-149.1792,-17.54362), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.3214,-17.70139,-149.51669,-17.72028), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.3214,-17.70139,-149.51669,-17.72028), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.3214,-17.70139,-149.51669,-17.72028), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.3214,-17.70139,-149.51669,-17.72028), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.64169,-17.61195,-149.1792,-17.55), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.64169,-17.61195,-149.1792,-17.55), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.64169,-17.61195,-149.1792,-17.55), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.64169,-17.61195,-149.1792,-17.55), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.63251,-17.55,-149.1792,-17.61195), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.63251,-17.55,-149.1792,-17.61195), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.63251,-17.55,-149.1792,-17.61195), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.63251,-17.55,-149.1792,-17.61195), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.347,-17.54362,-149.51669,-17.72028), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.347,-17.54362,-149.51669,-17.72028), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.347,-17.54362,-149.51669,-17.72028), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.347,-17.54362,-149.51669,-17.72028), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.4203,-17.50751,-149.51669,-17.76556), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.4203,-17.50751,-149.51669,-17.76556), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.4203,-17.50751,-149.51669,-17.76556), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.4203,-17.50751,-149.51669,-17.76556), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
-    render_tiles((-149.51669,-17.49945,-149.51669,-17.76556), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
-    render_tiles((-149.51669,-17.49945,-149.51669,-17.76556), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
-    render_tiles((-149.51669,-17.49945,-149.51669,-17.76556), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
-    render_tiles((-149.51669,-17.49945,-149.51669,-17.76556), mapfile, tile_dir, 17, 17, "pf-french-polynesia")
+    render_tiles((-149.64169,-17.87084,-149.1489,-17.49945), mapfile, tile_dir, 0, 11, "pf-french-polynesia")
+    render_tiles((-149.64169,-17.87084,-149.1489,-17.49945), mapfile, tile_dir, 13, 13, "pf-french-polynesia")
+    render_tiles((-149.64169,-17.87084,-149.1489,-17.49945), mapfile, tile_dir, 15, 15, "pf-french-polynesia")
+    render_tiles((-149.64169,-17.87084,-149.1489,-17.49945), mapfile, tile_dir, 17, 17, "pf-french-polynesia")

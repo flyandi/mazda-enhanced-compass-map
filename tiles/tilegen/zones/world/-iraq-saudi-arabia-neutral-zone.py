@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,41 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: 
     # Region Name: Iraq-Saudi Arabia Neutral Zone
 
-	render_tiles((45.50888,28.77472,45.50888,29.47443), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.50888,28.77472,45.50888,29.47443), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.50888,28.77472,45.50888,29.47443), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.50888,28.77472,45.50888,29.47443), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.76499,28.85694,45.50888,29.3686), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.76499,28.85694,45.50888,29.3686), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.76499,28.85694,45.50888,29.3686), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.76499,28.85694,45.50888,29.3686), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((46.54161,29.10416,45.50888,29.3686), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((46.54161,29.10416,45.50888,29.3686), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((46.54161,29.10416,45.50888,29.3686), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((46.54161,29.10416,45.50888,29.3686), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.74193,29.19055,45.50888,29.20538), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.74193,29.19055,45.50888,29.20538), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.74193,29.19055,45.50888,29.20538), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.74193,29.19055,45.50888,29.20538), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((44.71489,29.20538,45.50888,29.19055), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.77415,29.3686,45.46499,28.85694), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.77415,29.3686,45.46499,28.85694), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.77415,29.3686,45.46499,28.85694), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.77415,29.3686,45.46499,28.85694), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.46499,29.47443,45.46499,28.77472), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.46499,29.47443,45.46499,28.77472), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.46499,29.47443,45.46499,28.77472), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
-	render_tiles((45.46499,29.47443,45.46499,28.77472), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")
+    render_tiles((44.71489,28.77472,46.54161,29.47443), mapfile, tile_dir, 0, 11, "-iraq-saudi-arabia-neutral-zone")
+    render_tiles((44.71489,28.77472,46.54161,29.47443), mapfile, tile_dir, 13, 13, "-iraq-saudi-arabia-neutral-zone")
+    render_tiles((44.71489,28.77472,46.54161,29.47443), mapfile, tile_dir, 15, 15, "-iraq-saudi-arabia-neutral-zone")
+    render_tiles((44.71489,28.77472,46.54161,29.47443), mapfile, tile_dir, 17, 17, "-iraq-saudi-arabia-neutral-zone")

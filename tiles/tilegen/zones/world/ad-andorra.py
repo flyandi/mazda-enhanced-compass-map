@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -194,7 +193,15 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
         renderers[i].join()
 
 
+
+
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
         mapfile = "../../../tilestyles/mazda/mazda.xml"
@@ -202,7 +209,6 @@ if __name__ == "__main__":
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
         tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
@@ -220,35 +226,7 @@ if __name__ == "__main__":
     # Region: AD
     # Region Name: Andorra
 
-    render_tiles((1.53333,42.4361,1.53333,42.65387), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.53333,42.4361,1.53333,42.65387), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.53333,42.4361,1.53333,42.65387), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.53333,42.4361,1.53333,42.65387), mapfile, tile_dir, 17, 17, "ad-andorra")
-    render_tiles((1.44833,42.45082,1.53333,42.57221), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.44833,42.45082,1.53333,42.57221), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.44833,42.45082,1.53333,42.57221), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.44833,42.45082,1.53333,42.57221), mapfile, tile_dir, 17, 17, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 17, 17, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.71097,42.4735,1.53333,42.58166), mapfile, tile_dir, 17, 17, "ad-andorra")
-    render_tiles((1.44639,42.57221,1.54111,42.45082), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.44639,42.57221,1.54111,42.45082), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.44639,42.57221,1.54111,42.45082), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.44639,42.57221,1.54111,42.45082), mapfile, tile_dir, 17, 17, "ad-andorra")
-    render_tiles((1.78167,42.58166,1.54111,42.4735), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.78167,42.58166,1.54111,42.4735), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.78167,42.58166,1.54111,42.4735), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.78167,42.58166,1.54111,42.4735), mapfile, tile_dir, 17, 17, "ad-andorra")
-    render_tiles((1.43525,42.59715,1.53333,42.57221), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.43525,42.59715,1.53333,42.57221), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.43525,42.59715,1.53333,42.57221), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.43525,42.59715,1.53333,42.57221), mapfile, tile_dir, 17, 17, "ad-andorra")
-    render_tiles((1.54111,42.65387,1.54111,42.4361), mapfile, tile_dir, 0, 11, "ad-andorra")
-    render_tiles((1.54111,42.65387,1.54111,42.4361), mapfile, tile_dir, 13, 13, "ad-andorra")
-    render_tiles((1.54111,42.65387,1.54111,42.4361), mapfile, tile_dir, 15, 15, "ad-andorra")
-    render_tiles((1.54111,42.65387,1.54111,42.4361), mapfile, tile_dir, 17, 17, "ad-andorra")
+    render_tiles((1.43525,42.4361,1.78167,42.65387), mapfile, tile_dir, 0, 11, "ad-andorra")
+    render_tiles((1.43525,42.4361,1.78167,42.65387), mapfile, tile_dir, 13, 13, "ad-andorra")
+    render_tiles((1.43525,42.4361,1.78167,42.65387), mapfile, tile_dir, 15, 15, "ad-andorra")
+    render_tiles((1.43525,42.4361,1.78167,42.65387), mapfile, tile_dir, 17, 17, "ad-andorra")

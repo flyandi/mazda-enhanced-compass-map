@@ -3,7 +3,6 @@
 # Tooling Template for Tile Generation
 # DO NOT MODIFY 
 
-
 from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 import sys, os
@@ -197,15 +196,20 @@ def render_tiles(bbox, mapfile, tile_dir, minZoom=1,maxZoom=18, name="unknown", 
 
 
 if __name__ == "__main__":
+
+    from mapnik import register_fonts, FontEngine
+    
+    custom_fonts_dir = '../../../../fonts/'
+    register_fonts(custom_fonts_dir)
+
     home = os.environ['HOME']
     try:
-        mapfile = "../tilestyles/mazda/mazda.xml"
+        mapfile = "../../../tilestyles/mazda/mazda.xml"
     except KeyError:
         print("[MapFile] Not found")
         sys.exit(1)
     try:
-        # ./tilegen/zones/[zone]/[region]
-        tile_dir = "../../../output/"
+        tile_dir = "../../../../output/"
     except KeyError:
         print("[OutputDir] No output directory found")
         sys.exit(1)
@@ -214,73 +218,15 @@ if __name__ == "__main__":
         tile_dir = tile_dir + '/'
 
 
+    print ("Starting")
+
     # ------------------------------------------------------------------------
     # Tile Render Data
     # Zone: world
     # Region: KI
     # Region Name: Kiribati
 
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.2403,1.705,-157.507,1.77556), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.1917,1.71667,-157.507,1.76444), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.1917,1.71667,-157.507,1.76444), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.1917,1.71667,-157.507,1.76444), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.1917,1.71667,-157.507,1.76444), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.1911,1.76444,-157.507,1.71667), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.1911,1.76444,-157.507,1.71667), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.1911,1.76444,-157.507,1.71667), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.1911,1.76444,-157.507,1.71667), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.23779,1.77556,-157.507,1.705), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.23779,1.77556,-157.507,1.705), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.23779,1.77556,-157.507,1.705), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.23779,1.77556,-157.507,1.705), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.5681,1.85556,-157.2403,1.91389), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.5681,1.85556,-157.2403,1.91389), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.5681,1.85556,-157.2403,1.91389), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.5681,1.85556,-157.2403,1.91389), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.4597,1.85889,-157.2403,1.89722), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.4597,1.85889,-157.2403,1.89722), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.4597,1.85889,-157.2403,1.89722), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.4597,1.85889,-157.2403,1.89722), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.3495,1.8625,-157.2403,1.95222), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.3495,1.8625,-157.2403,1.95222), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.3495,1.8625,-157.2403,1.95222), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.3495,1.8625,-157.2403,1.95222), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.4445,1.89722,-157.2403,2.02555), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.4445,1.89722,-157.2403,2.02555), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.4445,1.89722,-157.2403,2.02555), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.4445,1.89722,-157.2403,2.02555), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.37669,1.89805,-157.2403,1.95222), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.37669,1.89805,-157.2403,1.95222), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.37669,1.89805,-157.2403,1.95222), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.37669,1.89805,-157.2403,1.95222), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.5592,1.91389,-157.507,1.85556), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.5592,1.91389,-157.507,1.85556), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.5592,1.91389,-157.507,1.85556), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.5592,1.91389,-157.507,1.85556), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.37061,1.95222,-157.2403,1.89805), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.37061,1.95222,-157.2403,1.89805), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.37061,1.95222,-157.2403,1.89805), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.37061,1.95222,-157.2403,1.89805), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.3136,1.97472,-157.507,1.8625), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.3136,1.97472,-157.507,1.8625), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.3136,1.97472,-157.507,1.8625), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.3136,1.97472,-157.507,1.8625), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.4967,1.99583,-157.2403,2.02667), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.4967,1.99583,-157.2403,2.02667), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.4967,1.99583,-157.2403,2.02667), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.4967,1.99583,-157.2403,2.02667), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.4411,2.02555,-157.2403,1.89722), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.4411,2.02555,-157.2403,1.89722), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.4411,2.02555,-157.2403,1.89722), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.4411,2.02555,-157.2403,1.89722), mapfile, tile_dir, 17, 17, "ki-kiribati")
-	render_tiles((-157.507,2.02667,-157.2403,1.99583), mapfile, tile_dir, 0, 11, "ki-kiribati")
-	render_tiles((-157.507,2.02667,-157.2403,1.99583), mapfile, tile_dir, 13, 13, "ki-kiribati")
-	render_tiles((-157.507,2.02667,-157.2403,1.99583), mapfile, tile_dir, 15, 15, "ki-kiribati")
-	render_tiles((-157.507,2.02667,-157.2403,1.99583), mapfile, tile_dir, 17, 17, "ki-kiribati")
+    render_tiles((-157.5681,1.705,-157.1911,2.02667), mapfile, tile_dir, 0, 11, "ki-kiribati")
+    render_tiles((-157.5681,1.705,-157.1911,2.02667), mapfile, tile_dir, 13, 13, "ki-kiribati")
+    render_tiles((-157.5681,1.705,-157.1911,2.02667), mapfile, tile_dir, 15, 15, "ki-kiribati")
+    render_tiles((-157.5681,1.705,-157.1911,2.02667), mapfile, tile_dir, 17, 17, "ki-kiribati")
