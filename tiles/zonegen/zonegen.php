@@ -3,7 +3,7 @@
  * ZoneGen
  * Enhanced Compass for Mazda Connect Infotainment
  * 
- * This creates optimized bounding box areas for the tile generation
+ * This creates the zones for tile rendering and downloads the necessary resources.
  *
  * Written by Andreas Schwarz (http://github.com/flyandi/mazda-enhanced-compass)
  * Copyright (c) 2015. All rights reserved.
@@ -74,6 +74,7 @@ if($zones != null && isset($zones->zones))
 					$shpData = $record->getShpData();
 					$shapes = array();
 					$boxes = array();
+					$json = array();
 					$bbox = array(false, false, false, false);
 
 
@@ -132,7 +133,15 @@ if($zones != null && isset($zones->zones))
 										$params = array(
 											"BB" => sprintf("(%s)", implode(",", $bbox)),
 
+											"JSON" => array(
+												array($bbox[0], $bbox[1]),
+												array($bbox[2], $bbox[1]),
+
+												//array($bbox[2], $bbox[3]),
+											),
+
 											"NAME" => $partId,
+
 										);
 
 										break;
@@ -149,6 +158,11 @@ if($zones != null && isset($zones->zones))
 												$a[0], $a[1], $c[0], $b[1]
 											),
 
+											"JSON" => array(
+												array($a[0], $a[1]), 
+												array($c[0], $b[1]),
+											),
+
 											"NAME" => $partId,
 										);
 
@@ -159,11 +173,21 @@ if($zones != null && isset($zones->zones))
 								foreach($renderParams as $cmd) {
 
 									foreach($params as $key=>$value) {
-										$cmd = str_replace(sprintf("{%s}", $key), $value, $cmd);
+										if(!is_array($value))
+											$cmd = str_replace(sprintf("{%s}", $key), $value, $cmd);
 									}
 
 									$boxes[] = $cmd;
 								}
+
+								$json[] = array(
+									"type" => "Feature",
+									"geometry" => array(			
+										"type" => "LineString",
+										"coordinates" => $params["JSON"],
+									)
+								);
+
 							}
 						}
 
@@ -181,11 +205,23 @@ if($zones != null && isset($zones->zones))
 
 						$path = strtolower(sprintf("%s%s/", OUTPUT_PATH, $zone->name));
 						$fn = sprintf("%s%s.py", $path, $partId);
+						$fjn = sprintf("%s%s.json", $path, $partId);
 						@mkdir($path, 0777, true);
 
 						file_put_contents($fn, $template);
 						chmod($fn, 0777);
 
+						// write geojson
+						file_put_contents($fjn, json_encode(array(
+							"type"=> "FeatureCollection",
+							"crs"=> array(
+								"type" => "name",
+								"properties" => array(
+									"name" => "EPSG:4326"
+								)
+							),
+							"features" => $json
+						)));
 						echo " Done.\n";					
 					}
 				}

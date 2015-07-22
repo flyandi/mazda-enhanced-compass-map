@@ -19,19 +19,41 @@
 	var params = {
 		center: [-13618678.447785482, 4201854.181677031],
 		zoom: 3,
-		zone: 'test'
+		zone: 'world',
+		bbox: 'us/florida',
 	};
 
 
 	// DO NOT CHANGE ANYTING HERE
 
+	var rects = new ol.source.Vector({
+
+		url: '../tiles/tilegen/zones/' + params.bbox + '.json',
+		format: new ol.format.GeoJSON(),
+
+	});
+
+	// create map
 	var map = new ol.Map({
         layers: [
          	new ol.layer.Tile({
 	            source: new ol.source.OSM({
 	            	url: '../output/' + params.zone + '/{z}/{x}/{y}.png',
 	        	})
-        	})
+        	}),
+
+        	new ol.layer.Vector({
+				source: rects,
+				style: new ol.style.Style({
+					fill: new ol.style.Fill({
+						color: 'rgba(255, 255, 255, 0.2)'
+					}),
+					stroke: new ol.style.Stroke({
+						color: '#ffcc33',
+						width: 2
+					}),
+				})
+			})
         ],
         target: document.getElementById("map"),
         view: new ol.View({
