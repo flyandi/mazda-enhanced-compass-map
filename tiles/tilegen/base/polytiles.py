@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-# Modified version for MZ
-
 import mapnik
 import sys, os, getpass, argparse
 import multiprocessing
@@ -9,11 +7,7 @@ from math import pi,cos,sin,log,exp,atan
 from subprocess import call
 from shapely.geometry import Polygon
 from shapely.wkb import loads
-from mapnik import register_fonts, FontEngine
-    
-# Register fonts
-custom_fonts_dir = '../../../fonts/'
-register_fonts(custom_fonts_dir)
+
 
 try:
 	import psycopg2
@@ -593,7 +587,8 @@ if __name__ == "__main__":
 	apg_other.add_argument('--scale', type=float, default=1.0, help='scale factor for HiDpi tiles (affects tile size)')
 	apg_other.add_argument('--threads', type=int, metavar='N', help='number of threads (default: 2)', default=4)
 	apg_other.add_argument('--skip-existing', action='store_true', default=False, help='do not overwrite existing files')
-	apg_other.add_argument('--delete-empty', action='store_true', default=True, help='delete empty tiles')
+	apg_other.add_argument('--delete-empty', action='store_true', default=False, help='delete empty tiles')
+	apg_other.add_argument('--custom-fonts', dest='customfonts', help='include custom fonts from a directory',  default=False)
 	apg_other.add_argument('--for-renderd', action='store_true', default=False, help='produce only a single tile for metatiles')
 	apg_other.add_argument('-q', '--quiet', dest='verbose', action='store_false', help='do not print any information',  default=True)
 	if HAS_PSYCOPG:
@@ -609,6 +604,12 @@ if __name__ == "__main__":
 	if options.bbox == None and options.poly == None and (not HAS_PSYCOPG or (options.cities == None and options.area == None)) and options.list == None:
 		parser.print_help()
 		sys.exit()
+
+	# custom fonts
+	if(options.customfonts):
+		from mapnik import register_fonts, FontEngine
+ 		#custom_fonts_dir = '../../../fonts/'
+		register_fonts(options.customfonts);
 
 	# writer
 	if options.tiledir:

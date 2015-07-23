@@ -24,205 +24,72 @@
  * If not, see http://www.gnu.org/licenses/
  */
 
-// Includes
-include("lib/shp.inc.php");
-include("lib/functions.inc.php");
+// includes
+include "lib/functions.lib.php";
 
 // Definitions
-define("FILE_ZONES", "zones/zones.json");
-define("FILE_ZONE", "zone.json");
-
-define("TEMPLATE", "templates/tiles.template");
+define("FILE_ZONES", "zones.json");
 define("OUTPUT_PATH", "../tilegen/zones/");
+
+define("SETTINGS", "_settings");
 
 // pre
 @mkdir(OUTPUT_PATH, 0777, true);
 
-// Read zones
-$zones = json_decode(file_get_contents(FILE_ZONES));
 
-// Process each zone
-if($zones != null && isset($zones->zones)) 
-	foreach($zones->zones as $zoneConfig) {
-			
-		// read zone file
-		$zone = json_decode(file_get_contents(sprintf("zones/%s/%s", $zoneConfig->path, FILE_ZONE)));
+// class
+class ZoneGen {
 
-		if($zone != null && !$zone->disabled) {
+	/** 
+	 * constructor
+	 */
 
-			// load shapefile
-			$shapeFile = new ShapeFile(sprintf("zones/%s/%s", $zoneConfig->path, $zone->source), array(
-				"noparts" => false
-			));
+	public function __construct() {
 
-			// process records
-			while($record = $shapeFile->getNext()) {
+		// Read zone file
+		$this->sources = json_clean_decode(file_get_contents(FILE_ZONES));
 
-				// check mapping
-				if(isset($zone->mapping)) {
+		// process
+		$this->__cycle();
 
-					// read data
-					$dbfData = $record->getDbfData();
+	}
 
-					// process mapping
-					$data = (object) array(
-						"id" => trim(@$dbfData[$zone->mapping->id]),
-						"name" => trim(@$dbfData[$zone->mapping->name]),
-					);
+	/**
+	 * ::cycle
+	 */
 
-					// read shape
-					$shpData = $record->getShpData();
-					$shapes = array();
-					$boxes = array();
-					$json = array();
-					$bbox = array(false, false, false, false);
+	private function __cycle() {
 
+		// process sources
+		foreach($this->sources as $name => $source) {
 
-					// process shape
-					if(isset($shpData['numparts'])) {
+			ConOut("Processing zone %s", $name);
 
-						// some info
-						echo sprintf("[ZONE] %s: %s (%s) .. ", $zone->name, $data->id, $data->name);
+			// process zones
+			foreach($source->zones as $zone => $regions) {
+				
+				// process region
+				foreach($regions as $region => $subregion) {
 
-						// cycle through parts
-						foreach($shpData['parts'] as $part) {
+					switch(true) {
 
-							// get coordinates
-							$coords = array();
-							foreach ($part['points'] as $point) {
-								$coords[] = array(
-									round($point['x'],5),
-									round($point['y'],5)
-								);
-							}
+						// multiple regions
+						case is_array($subregion): 
 
-							// sort by y axis
-							usort($coords, function($a, $b) {
-								return $a[1] < $b[1] ? -1 : 1;
-							});
+							// process subregions
+							foreach($subregion as $id => $name) {
 
-
-							// create boxes
-							$partId = strtolower(sprintf("%s-%s",
-								$data->id,
-								str_replace(" ", "-", $data->name)
-							));
-
-							$renderParams = array(
-								"    render_tiles({BB}, mapfile, tile_dir, 0, 11, \"{NAME}\")",
-								"    render_tiles({BB}, mapfile, tile_dir, 13, 13, \"{NAME}\")",
-								"    render_tiles({BB}, mapfile, tile_dir, 15, 15, \"{NAME}\")",
-								"    render_tiles({BB}, mapfile, tile_dir, 17, 17, \"{NAME}\")",
-							);
-
-							foreach($coords as $a) {
-
-								switch(true) {
-
-									case $zone->box:
-
-										if($a[0] < $bbox[0] || $bbox[0] === false) $bbox[0] = $a[0];
-										if($a[1] < $bbox[1] || $bbox[1] === false) $bbox[1] = $a[1];
-
-										if($a[0] > $bbox[2] || $bbox[2] === false) $bbox[2] = $a[0];
-										if($a[1] > $bbox[3] || $bbox[3] === false) $bbox[3] = $a[1];
-
-
-										$boxes = array();
-
-										$params = array(
-											"BB" => sprintf("(%s)", implode(",", $bbox)),
-
-											"JSON" => array(
-												array($bbox[0], $bbox[1]),
-												array($bbox[2], $bbox[1]),
-
-												//array($bbox[2], $bbox[3]),
-											),
-
-											"NAME" => $partId,
-
-										);
-
-										break;
-
-
-									default:
-							
-										// get nearest and farthest
-										$b = getNearest($a[0], $coords);
-										$c = getFarthest($b[1], $coords);
-
-										$params = array(
-											"BB" => sprintf("(%s,%s,%s,%s)",
-												$a[0], $a[1], $c[0], $b[1]
-											),
-
-											"JSON" => array(
-												array($a[0], $a[1]), 
-												array($c[0], $b[1]),
-											),
-
-											"NAME" => $partId,
-										);
-
-
-										break;
-								}
-
-								foreach($renderParams as $cmd) {
-
-									foreach($params as $key=>$value) {
-										if(!is_array($value))
-											$cmd = str_replace(sprintf("{%s}", $key), $value, $cmd);
-									}
-
-									$boxes[] = $cmd;
-								}
-
-								$json[] = array(
-									"type" => "Feature",
-									"geometry" => array(			
-										"type" => "LineString",
-										"coordinates" => $params["JSON"],
-									)
-								);
+								$this->__process($source, $zone, $region, $name);
 
 							}
-						}
 
-						// write template
-						$template = file_get_contents(TEMPLATE);
-						
-						foreach(array(
-							"ZONEID" => $zone->name,
-							"PARTID" => $data->id,
-							"PARTNAME" => $data->name,
-							"CONTENT" => implode("\n", $boxes)
-						) as $key=>$value) {
-							$template = str_replace(sprintf("{%s}", $key), $value, $template);
-						}
+							break;
 
-						$path = strtolower(sprintf("%s%s/", OUTPUT_PATH, $zone->name));
-						$fn = sprintf("%s%s.py", $path, $partId);
-						$fjn = sprintf("%s%s.json", $path, $partId);
-						@mkdir($path, 0777, true);
+						// single region
+						default:
+							$this->__process($source, $zone, $region, $subregion);
+							break;
 
-						file_put_contents($fn, $template);
-						chmod($fn, 0777);
-
-						// write geojson
-						file_put_contents($fjn, json_encode(array(
-							"type"=> "FeatureCollection",
-							"crs"=> array(
-								"type" => "name",
-								"properties" => array(
-									"name" => "EPSG:4326"
-								)
-							),
-							"features" => $json
-						)));
-						echo " Done.\n";					
 					}
 				}
 			}
@@ -230,3 +97,102 @@ if($zones != null && isset($zones->zones))
 	}
 
 
+	/**
+	 * ::process
+	 */
+
+	private function __process($source, $zone, $region, $subregion) {
+
+		// process settings
+		$overwrite = isset($source->settings->overwriteExistingFiles) && $source->settings->overwriteExistingFiles === true;
+		
+		// start
+		ConOut("Processing %s/%s/%s", $zone, $region, $subregion);
+
+		// process subregion name
+		$name = $subregion;
+
+		// transform
+		if(isset($source->filenames->transform)) {
+			foreach(explode(",", $source->filenames->transform) as $transform) {
+
+				switch($transform) {
+
+					case "lowercase": $name = strtolower($name); break;
+					case "spacedash": $name = str_replace(" ", "-", $name); break;
+
+				}
+			}
+		}
+
+		$defaults = array(
+			"zone" => $zone,
+			"region" => $region,
+			"subregion" => $subregion,
+			"name" => $name,	
+		);
+
+		// poly
+		if(isset($source->process->poly) && $source->process->poly == true) {
+
+			// build poly filename
+			$fn = srep(@$source->filenames->poly, $defaults);
+			$uri = suri($source->url, $zone, $region, $fn);
+
+			// check output
+			$path = srep(isset($source->output->poly) ? $source->output->poly : "poly/", $defaults);
+			$output = ts($path).$fn;
+
+			// create directory
+			if(!is_dir($path)) @mkdir($path, 0777, true);
+
+			if(!file_exists($output) || $overwrite) {
+
+				// echo
+				ConOut(" [Poly] %s => %s", $uri, $fn);
+
+				// download 
+				file_put_contents($output, file_get_contents($uri));
+			}
+		}
+
+		// render
+		if(isset($source->process->render) && $source->process->render == true) {
+
+			// load render template
+			$template = file_get_contents("templates/render.template");
+
+			// replace values
+			$template = srep($template, array_merge($defaults, array(
+
+				"polyname" => srep(@$source->filenames->poly, $defaults)
+
+			)));
+
+			// create fn
+			$fn = srep($source->filenames->render, $defaults);
+
+			// create path
+			$path = srep(isset($source->output->render) ? $source->output->render : "render/", $defaults);
+			$output = ts($path).$fn;
+
+			// create directory
+			if(!is_dir($path)) @mkdir($path, 0777, true);
+
+			// write output
+			file_put_contents($output, $template);
+
+			chmod($output, 0755);
+
+			ConOut(" [Render] => %s", $output);
+
+		}
+	}
+}
+
+
+/**
+ * run
+ */
+
+$zg = new ZoneGen();

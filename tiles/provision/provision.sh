@@ -15,32 +15,6 @@ cd tiles/provision
 
 
 # -----------------------------------------------------------
-# Load Zone Boundaries
-# -----------------------------------------------------------
-
-cd ../zonegen/
-mkdir zones
-cd zones
-
-#
-# United States
-# We use the 20m data which is good enough
-# (https://www.census.gov/geo/maps-data/data/cbf/cbf_state.html)
-#
-
-mkdir us
-cd us
-rm -rf data 
-mkdir data
-cd data
-wget http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_state_20m.zip
-unzip cb_2014_us_state_20m.zip
-cd ../..
-
-# return to base path
-cd ../../provision
-
-# -----------------------------------------------------------
 # Load Style Databases
 # -----------------------------------------------------------
 

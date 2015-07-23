@@ -19,20 +19,25 @@
 	var params = {
 		center: [-13618678.447785482, 4201854.181677031],
 		zoom: 3,
-		zone: 'test'
+		zones: [
+			'world-north-america',
+		]
 	};
 
 
 	// DO NOT CHANGE ANYTING HERE
 
-	var map = new ol.Map({
-        layers: [
-         	new ol.layer.Tile({
-	            source: new ol.source.OSM({
-	            	url: '../output/' + params.zone + '/{z}/{x}/{y}.png',
-	        	})
+	layers = [];
+	params.zones.forEach(function(zone) {
+		layers.push(new ol.layer.Tile({
+            source: new ol.source.OSM({
+            	url: '../output/' + zone + '/{z}/{x}/{y}.png',
         	})
-        ],
+    	}));
+    });
+
+	var map = new ol.Map({
+		layers: layers,
         target: document.getElementById("map"),
         view: new ol.View({
             maxZoom: 17,
