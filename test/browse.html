@@ -10,22 +10,32 @@
 
 <body>
 
-	<div id="map"></div>
-
 	<script>
 
-	// CHANGE THESE PARAMETERS
+	/**
+	 * Configuration
+	 */
 
 	var params = {
 		center: [-13618678.447785482, 4201854.181677031],
 		zoom: 3,
 		zones: [
+
+			/**
+			 * Add the names of the zones to displayed
+			 * The name should be the same as the folder name of the zone in ./output
+			 *
+			 * WARNING: Adding too many zones will kill your browser :-)
+			 */
+
 			'world-north-america',
 		]
 	};
 
 
-	// DO NOT CHANGE ANYTING HERE
+	/**
+	 * Runtime, avoid making changes here
+	 */
 
 	layers = [];
 	params.zones.forEach(function(zone) {
@@ -43,12 +53,12 @@
             maxZoom: 17,
             center: params.center,
             zoom: params.zoom
-            //rotation: Math.PI / 6,
         })     
     });
 
 	</script>
 
+	<div id="map"></div>
 
 </body>
 </html>
