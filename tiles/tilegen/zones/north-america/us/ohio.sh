@@ -12,3 +12,7 @@ cd ../../../base
 ./polytiles.py -p ../poly/north-america/us/ohio.poly -s ../../tilestyles/mazda/mazda.xml -t ../../../output/north-america-us-ohio/ --zooms 15 15 --delete-empty --custom-fonts ../../../fonts/
 ./polytiles.py -p ../poly/north-america/us/ohio.poly -s ../../tilestyles/mazda/mazda.xml -t ../../../output/north-america-us-ohio/ --zooms 17 17 --delete-empty --custom-fonts ../../../fonts/
 
+# cleanup
+echo "[Cleanup] This may take a while so hold tight."
+cd ../../../output/north-america-us-ohio/
+find . -empty -type d -delete
