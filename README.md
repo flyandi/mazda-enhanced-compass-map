@@ -92,26 +92,31 @@ But you can regenerate them or setup new zones. I included the world database th
 
 Also included is the entire United States split in each state. 
 
-I will prepare additional documentation how to create and handle zone files, but for now just check out the raw data in ```tiles/zonegen/```.
+I will prepare additional documentation how to create and handle zone files, but for now just check out the raw data in ```tiles/zonegen/``` and study the zone definiton file in ```tiles/zonegen/zones.json```. Should be pretty straight forward
 
 You need PHP in order to process the zones.
 
 
 ### Start rendering
 
-As stated above, each zone file renderes a particualar area. There are two folders:
+As stated above, each zone file renderes a particualar area. There are separated into zones, regions, subregions, e.g.:
 
-```tiles/tilegen/zones/us``` for the United States
-```tiles/tilegen/zones/world``` for the entire World
+```tiles/tilegen/zones/[zone]/[region]/[subregion]``` 
 
-Each folder contains multiple tile generation scripts for each region. To start rendering a region, just kickoff the script, e.g.
+```tiles/tilegen/zones/north-america/us/florida.sh``` 
 
-```./tiles/tilegen/zones/us/california-ca.py``` which will render the tiles for California.
+Each folder contains a tile shell script for the particular subregion. To start rendering a region, just kickoff the script, e.g.
+
+```./tiles/tilegen/zones/north-america/us/florida.sh``` which will render the tiles for Florida.
+
+#### Global Zones
+
+I also included a couple global zones which will render tiles for a large area but without a lot of details (up to zoom level 11), e.g. ```./tiles/tilegen/zones/globals/world-north-america.py``` renderes a base tile set for North America. Those are useful for to complete a detailed set.
 
 
 ### Output 
 
-Any rendered zone will be rendered to ```./output/``` in it's folder. In order to use them with ECA you need to copy the tiles in the appropiate folder on the ECA SD-Card. Follow the instructions on the main project (as soon they are published).
+Any rendered zone will be rendered to ```./output/``` in it's folder. In order to use them with ECA you need to copy the tiles in the appropiate folder on the ECA SD-Card. Follow the instructions on the main project.
 
 
 ## POI
