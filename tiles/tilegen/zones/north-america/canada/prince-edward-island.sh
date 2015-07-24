@@ -16,3 +16,10 @@ cd ../../../base
 echo "[Cleanup] This may take a while so hold tight."
 cd ../../../output/north-america-canada-prince-edward-island/
 find . -empty -type d -delete
+
+# packup
+echo "[Packing] Please wait."
+7z a north-america-canada-prince-edward-island.7z .
+
+# done
+echo "[Done] Ready for upload."
