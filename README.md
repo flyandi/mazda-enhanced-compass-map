@@ -105,7 +105,7 @@ You need PHP in order to process the zones.
 
 ### Start rendering
 
-As stated above, each zone file renderes a particualar area. There are separated into zones, regions, subregions, e.g.:
+As stated above, each zone file renderes a particualar area. There are separated into zones, regions, subregions, e.g.
 
 ```tiles/tilegen/zones/[zone]/[region]/[subregion]``` 
 
