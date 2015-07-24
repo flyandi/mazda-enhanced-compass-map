@@ -107,7 +107,8 @@ You need PHP in order to process the zones.
 
 As stated above, each zone file renderes a particualar area. There are separated into zones, regions, subregions, e.g
 
-```tiles/tilegen/zones/[zone]/[region]/[subregion]``` 
+tiles/tilegen/zones/[zone]/[region]/[subregion]
+
 
 ```tiles/tilegen/zones/north-america/us/florida.sh``` 
 
