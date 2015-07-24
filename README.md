@@ -61,12 +61,18 @@ The next step is to download the local layers and zone files. I setup a provisio
 git clone https://github.com/flyandi/mazda-enhanced-compass-map
 ````
 
-
 ### Prepare layers and zones
 
 Run the script ```tiles/provision/provision.sh``` 
 
 This will download all resources needed in order to render the tiles.
+
+### Install other dependencies
+
+The renderer is using a modified version of the excellent polytiles.py script by Zverik. The script depends on the shapely geometry library (https://github.com/Toblerity/Shapely) that needs to be installed prior using it.
+
+
+```pip install shapely```
 
 
 ### Test if it works
