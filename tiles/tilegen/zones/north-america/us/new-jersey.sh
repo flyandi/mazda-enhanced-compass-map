@@ -7,7 +7,7 @@
 
 cd ../../../base
 
-./polytiles.py -p ../poly/north-america/us/new-jersey.poly -s ../../tilestyles/mazda/mazda.xml -t ../../../output/north-america-us-new-jersey/ --zooms 0 11 --delete-empty --custom-fonts ../../../fonts/
+./polytiles.py -p ../poly/north-america/us/new-jersey.poly -s ../../tilestyles/mazda/mazda.xml -t ../../../output/north-america-us-new-jersey/ --zooms 11 11 --delete-empty --custom-fonts ../../../fonts/
 ./polytiles.py -p ../poly/north-america/us/new-jersey.poly -s ../../tilestyles/mazda/mazda.xml -t ../../../output/north-america-us-new-jersey/ --zooms 13 13 --delete-empty --custom-fonts ../../../fonts/
 ./polytiles.py -p ../poly/north-america/us/new-jersey.poly -s ../../tilestyles/mazda/mazda.xml -t ../../../output/north-america-us-new-jersey/ --zooms 15 15 --delete-empty --custom-fonts ../../../fonts/
 ./polytiles.py -p ../poly/north-america/us/new-jersey.poly -s ../../tilestyles/mazda/mazda.xml -t ../../../output/north-america-us-new-jersey/ --zooms 17 17 --delete-empty --custom-fonts ../../../fonts/
