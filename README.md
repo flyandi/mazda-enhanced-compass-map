@@ -107,6 +107,21 @@ You need PHP in order to process the zones.
 
 As stated above, each zone file renderes a particualar area. There are separated into zones, regions, subregions, e.g
 
+```
+tiles/tilegen/zones/[zone]/[region]/[subregion]
+
+tiles/tilegen/zones/north-america/us/florida.sh
+``` 
+
+Each folder contains a tile shell script for the particular subregion. To start rendering a region, just kickoff the script, e.g.
+
+```
+./tiles/tilegen/zones/north-america/us/florida.sh
+``` 
+
+which will render the tiles for Florida.
+
+
 #### Global Zones
 
 I also included a couple global zones which will render tiles for a large area but without a lot of details (up to zoom level 11), e.g. ```./tiles/tilegen/zones/globals/world-north-america.py``` renderes a base tile set for North America. Those are useful for to complete a detailed set.
